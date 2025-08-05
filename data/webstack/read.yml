@@ -1,0 +1,327 @@
+weight: 9
+taxonomy: 阅读
+icon: fas fa-book-open
+list:
+  - term: 知识
+    icon: fab fa-readme
+    links:
+      - title: Archive
+        logo: archive.org.png
+        url: https://archive.org/
+        description: Internet Archive
+      - title: Wikipedia
+        logo: wikipedia.svg
+        url: https://zh.wikipedia.org/
+        description: 维基百科
+      - title: MBAlib
+        logo: mbalib.ico
+        url: http://wiki.mbalib.com/
+        description: 标记美好生活
+      - title: NASA
+        logo: nasa.png
+        url: https://www.nasa.gov/
+        description: 标记美好生活
+      - title: NASA 中文
+        logo: nasachina.png
+        url: https://www.nasachina.cn/
+        description: 保护地球，探索宇宙，发现文明
+      - title: NASA Apod
+        logo: apod.nasa.gov.png
+        url: https://apod.nasa.gov/apod/astropix.html
+        description: A different astronomy and space science related image is featured each day, along with a brief explanation.
+      - title: 台湾成大 APOD
+        logo: sprite.phys.ncku.edu.tw.png
+        url: http://sprite.phys.ncku.edu.tw/astrolab/mirrors/apod/archivepix.html
+        description: 标记美好生活
+      - title: 谷歌学术
+        logo: scholar.google.com.png
+        url: https://scholar.google.com/ncr?gws_rd=ssl
+        description: 标记美好生活
+      - title: SCI Hub
+        logo: sci-hub.st.png
+        url: https://sci-hub.st/
+        description: 标记美好生活
+      - title: 国家地理
+        logo: nationalgeographic.png
+        url: https://www.nationalgeographic.com/
+        description: 标记美好生活
+      - title: 中国国家地理
+        logo: dili360.png
+        url: http://www.dili360.com/
+        description: 标记美好生活
+      - title: 中国大百科全书
+        logo: h.bkzx.cn.png
+        url: http://h.bkzx.cn/
+        description: 标记美好生活
+      - title: 绘画在线博物馆
+        logo: gallerix.asia.png
+        url: https://gallerix.asia/
+        description: 标记美好生活
+      - title: PapersWithCode
+        logo: paperswithcode.com.png
+        url: https://paperswithcode.com/
+        description: 标记美好生活
+      - title: CNNIC
+        logo: cnnic.png
+        url: http://www.cnnic.cn/
+        description: 标记美好生活
+      - title: 知 网
+        logo: cnki.ico
+        url: http://www.cnki.net/
+        description: 标记美好生活
+      - title: 汉 典
+        logo: zdic.png
+        url: http://www.zdic.net/
+        description: 标记美好生活
+      - title: IMDb
+        logo: imdb.png
+        url: http://www.imdb.com/
+        description: 标记美好生活
+      - title: NeoDB
+        logo: neodb.social.png
+        url: https://neodb.social/discover/
+        description: NeoDB 影音游戏播客数据库
+      - title: Vol.moe
+        logo: volmoe.com.png
+        url: https://volmoe.com/
+        description: 标记美好生活
+      - title: 微信读书
+        logo: r.qq.com.png
+        url: https://r.qq.com/
+        description: 标记美好生活
+      - title: Virtual Travel
+        logo: airpano.png
+        url: https://www.airpano.com/
+        description: 标记美好生活
+      - title: News Minimalist
+        logo: newsminimalist.png
+        url: https://www.newsminimalist.com/
+        description: Only significant news by ChatGPT
+      - title: 歪脑 WHYNOT
+        logo: wainao.png
+        url: https://www.wainao.me/
+        description: 有深度的内容
+      - title: 探索高质量内容
+        logo: immersivetranslate.com.png
+        url: https://immersivetranslate.com/docs/sites/
+        description: 标记美好生活
+      - title: IMFD
+        logo: imfdb.org.png
+        url: https://imfdb.org/wiki/Main_Page
+        description: Guns in Movies, TV and Video Games
+      - title: Whole Earth Index
+        logo: wholeearth.info.png
+        url: https://wholeearth.info/
+        description: 标记美好生活
+      - title: 虚拟博物馆导航
+        logo: vrworld.png
+        url: https://www.vrworld.cc/
+        description: 标记美好生活
+      - title: 中国历朝代视频讲解
+        logo: historyline.ico
+        url: https://github.com/liujuntao123/chines-history-video
+        description: 标记美好生活
+      - title: Switch520
+        logo: gamer520.png
+        url: https://www.gamer520.com/
+        description: 全球游戏交流中心 白嫖
+      - title: 元素周期表
+        logo: elements.wlonk.com.png
+        url: https://elements.wlonk.com/
+        description: 标记美好生活
+      - title: Ogden's Basic English
+        logo: zbenglish.net.png
+        url: https://zbenglish.net/sites/basic/basiceng.html
+        description: 标记美好生活
+      - title: Wikipedia Search
+        logo: wikipedia.svg
+        url: https://wikipedia-semantic-search.vercel.app/
+        description: Wikipedia Semantic Search
+      - title: 汉语新解
+        logo: hanyuxinjie.com.png
+        url: https://hanyuxinjie.com/
+        description: 标记美好生活
+      - title: 紫微研习社
+        logo: iztro.com.png
+        url: https://iztro.com/
+        description: 紫微研习社 ziwei.pro
+      - title: Artvee
+        logo: artvee.com.png
+        url: https://artvee.com/
+        description: 标记美好生活
+      - title: DCP Confluence
+        logo: confluence.org.png
+        url: https://confluence.org/
+        description: 标记美好生活
+
+  - term: 资讯
+    icon: fa fa-newspaper-o
+    links:
+      - title: Daily Hot
+        logo: 50.png
+        url: https://hot.baiwumm.com/
+        description: 汇聚全网热点，热门尽览无余
+      - title: Readhub
+        logo: readhub.cn.png
+        url: https://readhub.cn/
+        description: 标记美好生活
+      - title: 小鸡词典
+        logo: jikipedia.com.png
+        url: https://jikipedia.com/
+        description: 标记美好生活
+      - title: 今日热榜
+        logo: tophub.today.png
+        url: https://tophub.today/
+        description: 标记美好生活
+      - title: 一 席
+        logo: 189.png
+        url: https://yixi.tv/
+        description: 标记美好生活
+      - title: 有 据
+        logo: chinafactcheck.com.png
+        url: https://chinafactcheck.com/
+        description: 标记美好生活
+      - title: Houzz
+        logo: houzz.png
+        url: https://www.houzz.com/
+        description: 标记美好生活
+      - title: Buzzing
+        logo: buzzing.png
+        url: https://www.buzzing.cc/
+        description: 标记美好生活
+      - title: 新东方学习库
+        logo: library.koolearn.com.png
+        url: https://library.koolearn.com/index
+        description: 标记美好生活
+      - title: pudding
+        logo: pudding.cool.png
+        url: https://pudding.cool/
+        description: 标记美好生活
+      - title: 自由知乎
+        logo: freezhihu.org.png
+        url: https://freezhihu.org/
+        description: 标记美好生活
+      - title: Favoree
+        logo: favoree.png
+        url: https://www.favoree.io/
+        description: Discover and review YouTube channels, watch top-rated videos based on your interests.
+      - title: 国家中小学智慧教育平台
+        logo: basic.smartedu.cn.png
+        url: https://basic.smartedu.cn/
+        description: 标记美好生活
+
+  - term: 电子书
+    icon: fas fa-book
+    links:
+      - title: Annas Archive
+        logo: annas-archive.org.png
+        url: https://annas-archive.org/
+        description: 安娜的图书馆
+      - title: Z-Library
+        logo: z-library.sk.png
+        url: https://z-library.sk/
+        description: 标记美好生活
+      - title: Lib Gen
+        logo: libgen.svg
+        url: https://libgen.ac/
+        description: 标记美好生活
+      - title: 中国哲学电子书计划
+        logo: ctext.org.png
+        url: http://ctext.org/zhs
+        description: 标记美好生活
+      - title: 图 灵
+        logo: ituring.com.png
+        url: http://www.ituring.com.cn/
+        description: 标记美好生活
+      - title: 无名图书
+        logo: book123.png
+        url: https://www.book123.info/
+        description: 一个好看的电子书网站
+      - title: 10 万本电子书
+        logo: ebooks.svg
+        url: https://kska32.github.io/ebooks/
+        description: 标记美好生活
+      - title: 识典古籍
+        logo: shidianguji.png
+        url: https://www.shidianguji.com/
+        description: 古籍在线阅读平台
+      - title: Goodreads
+        logo: goodreads.png
+        url: https://www.goodreads.com/
+        description: Meet your next favorite book
+      - title: BookStash
+        logo: bookstash.io.png
+        url: https://bookstash.io/
+        description: Ideas from Top Books in 3m or less
+      - title: Volunteer for LibriVox
+        logo: librivox.org.png
+        url: https://librivox.org/pages/volunteer-for-librivox/
+        description: LibriVox Volunteer for LibriVox | free public domain audiobooks
+      - title: Gutenberg
+        logo: gutenberg.org.png
+        url: https://gutenberg.org/
+        description: Free eBooks
+      - title: 开放图书馆
+        logo: openlibrary.org.png
+        url: https://openlibrary.org/
+        description: 标记美好生活
+      - title: getfreeebooks
+        logo: getfreeebooks.png
+        url: https://www.getfreeebooks.com/
+        description: Download Free Ebooks, Legally - Legal Free Ebook Downloads
+      - title: Manybooks
+        logo: manybooks.net.png
+        url: https://manybooks.net/
+        description: 50,000+ Free eBooks in the Genres you Love
+      - title: Free-eBooks.net
+        logo: free-ebooks.png
+        url: https://www.free-ebooks.net/
+        description: Download free Fiction, Health, Romance and many more books
+      - title: PDF Drive
+        logo: pdfdrive.png
+        url: https://www.pdfdrive.com/
+        description: Search and download PDF files for free.
+      - title: 鸠摩搜索
+        logo: jiumodiary.png
+        url: https://www.jiumodiary.com/
+        description: Jiumo Search 鸠摩搜索 - 文档搜索引擎
+      - title: 书伴
+        logo: bookfere.com.png
+        url: https://bookfere.com/
+        description: 你的电子书伴侣
+      - title: 搬书匠
+        logo: banshujiang.cn.png
+        url: http://banshujiang.cn/
+        description: 搬书匠 - 电子书 (EBook)
+      - title: 国学大师
+        logo: guoxuedashi.png
+        url: https://www.guoxuedashi.com/
+        description: 国学网 _ 国学迷 _ 汉字宝典 _ 诗词宝典 _ 国学经典 & 古典文学 _ 古今图书集成 & 四库全书电子版 & 永乐大典
+      - title: 书格
+        logo: shuge.png
+        url: https://www.shuge.org/
+        description: 标记美好生活
+      - title: 熊猫搜书导航
+        logo: xmsoushu.com.png
+        url: https://xmsoushu.com/#/
+        description: 熊猫搜索导航 _ 一站式读书学习导航站 _ 熊猫搜书导航 _ 聚合电子资源及科研文档搜索导航 _ 学习资料检索和分享 __xmsoushu_xmsearch
+      - title: planetebook
+        logo: planetebook.png
+        url: https://www.planetebook.com/
+        description: 100% Free eBooks for All Devices
+      - title: DigiLibraries
+        logo: digilibraries.com.png
+        url: https://digilibraries.com/
+        description: Free Book Library and Publishing Platform
+      - title: ISTA
+        logo: ista.jpg
+        url: https://sacred-texts.com/
+        description: Internet Sacred Text Archive
+      - title: Bookboon
+        logo: bookboon.com.png
+        url: https://bookboon.com/en
+        description: Download free eBooks for students and read business books for professionals online
+      - title: Digital Magazines
+        logo: worldmags.net.png
+        url: https://worldmags.net/
+        description: Digital Magazines, PDF, True PDF

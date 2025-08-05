@@ -1,0 +1,112 @@
+weight: 6
+taxonomy: 云计算
+icon: fa fa-cloud
+links:
+  - title: Cloudflare
+    logo: cloudflare.svg
+    url: https://www.cloudflare.com/
+    description: 智能化云服务平台 | 免费 CDN 安全防护
+  - title: Vercel
+    logo: vercel.svg
+    url: https://vercel.com/
+    description: Serverless 服务平台
+  - title: Docker Hub
+    logo: docker.svg
+    url: https://hub.docker.com/
+    description: 标记美好生活
+  - title: AWS
+    logo: aws.svg
+    url: https://aws.amazon.com/
+    description: Amazon Web Services Cloud
+  - title: Google Cloud Platform
+    logo: gcp.svg
+    url: https://cloud.google.com/
+    description: Google Cloud Platform 谷歌云计算平台
+  - title: Azure
+    logo: microsoft-azure.svg
+    url: https://azure.microsoft.com/
+    description: 微软 Azure 云计算平台
+  - title: 阿里云
+    logo: aliyun.svg
+    url: https://www.aliyun.com/
+    description: 计算，为了无法计算的价值
+  - title: 腾讯云
+    logo: tencentcloud.svg
+    url: https://cloud.tencent.com/act/cps/redirect?redirect=2446&cps_key=1f05a4ef7955bfdbc954f3f0a115c2e3&from=console
+    description: 产业智变 · 云启未来
+  - title: 火山引擎控制台
+    logo: 553.png
+    url: https://console.volcengine.com/home
+    description: 标记美好生活
+  - title: 华为云
+    logo: huaweicloud.svg
+    url: https://huaweicloud.com/
+    description: 共建智能世界云底座
+  - title: 百度智能云
+    logo: baiducloud.svg
+    url: https://cloud.baidu.com/
+    description: 百度智能云 - 智能时代基础设施
+  - title: 又拍云
+    logo: upyun.svg
+    url: https://console.upyun.com/register/?invite=S1gZukfRw
+    description: 加速在线业务 - CDN 加速 - 云存储
+  - title: 多吉云
+    logo: dogecloud.png
+    url: https://www.dogecloud.com/?iuid=5123
+    description: 一站式视频云点播平台，轻量级的用户能够无需了解任何技术就轻而易举地展示和播放视频，而以视频为主要产品的用户能通过强大的 API 和 SDK 完成对视频的高级处理。
+  - title: 缤纷云
+    logo: bitiful.png
+    url: https://www.bitiful.com/
+    description: 强化低版本的对象存储和 CDN 服务
+  - title: 括彩云智能 CDN
+    logo: 547.png
+    url: https://www.kuocaicdn.com/register?code=8pcrj4mqe237s
+    description: 标记美好生活
+  - title: Linode
+    logo: linode.svg
+    url: https://www.linode.com/
+    description: Cloud Computing Services | VMs, Kubernetes, Storage
+  - title: DigitalOcean
+    logo: digitalocean.svg
+    url: https://www.digitalocean.com/?refcode=32b844ce481a
+    description: The Cloud for Builders
+  - title: Vultr
+    logo: vultr.svg
+    url: http://www.vultr.com/?ref=6995088
+    description: SSD VPS Servers, Cloud Servers and Cloud Hosting
+  - title: Backblaze
+    logo: backblaze.svg
+    url: https://www.backblaze.com/
+    description: Backblaze
+  - title: LightCDN
+    logo: lightcdn.png
+    url: https://www.lightcdn.com/
+    description: LightCDN
+  - title: 搬瓦工
+    logo: 34.png
+    url: https://bandwagonhost.com/aff.php?aff=39172
+    description: 美西线路优化最好的 VPS 搬瓦工
+  - title: Algolia
+    logo: algolia.svg
+    url: https://www.algolia.com/
+    description: 标记美好生活
+  - title: JustMySocks
+    logo: 39.png
+    url: https://justmysocks.net/members/aff.php?aff=7265
+    description: 标记美好生活
+  - title: DlerCloud
+    logo: dlercloud.png
+    url: https://dlercloud.com/
+    description: 标记美好生活
+  - title: NF Cloud
+    logo: nfcloud.png
+    url: https://nfcloud.one/
+    description: 标记美好生活
+  - title: Cloudflare Domain Pricing
+    logo: cloudflare.svg
+    url: https://cfdomainpricing.com/
+    description: 标记美好生活
+  - title: Claw Cloud
+    logo: clawcloud.png
+    url: https://console.run.claw.cloud/signin?link=6C2YY1FG8Y28
+    description: 标记美好生活

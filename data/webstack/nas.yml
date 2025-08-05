@@ -1,0 +1,144 @@
+weight: 2
+taxonomy: NAS Apps
+icon: fab fa-docker
+links:
+  - title: 影视
+    logo: fnos-media.webp
+    url: https://nas.eallion.com/v
+    description: 飞牛私有云影视
+
+  - title: 相册
+    logo: fnos-photos.webp
+    url: https://nas.eallion.com/p
+    description: 飞牛私有云相册
+
+  - title: 音乐 Navidrome
+    logo: navidrome.svg
+    url: https://music.eallion.com
+    description: Personal Streaming Service
+
+  - title: Vaultwarden
+    logo: vaultwarden.svg
+    url: https://vaultwarden.eallion.com
+    description: A simple wake on lan web app
+    server: my-docker
+    container: vaultwarden
+
+  - title: Nginx Proxy Manager
+    logo: nginx-proxy-manager.svg
+    url: https://nginx.eallion.com
+    description: A simple wake on lan web app
+    server: my-docker
+    container: nginxproxymanager
+
+  - title: Duplicati
+    logo: duplicati.svg
+    url: http://192.168.0.2:8200
+    description: Zero-trust backup
+    server: my-docker
+    container: duplicati
+
+  - title: n8n
+    logo: n8n.svg
+    url: https://n8n.eallion.com/
+    description: Open Source, Self-hosted, Your Notes, Your Way
+    server: bwh-la-docker
+    container: n8n
+
+  - title: Mastodon
+    logo: mastodon.svg
+    url: https://e5n.cc
+    description: A simple wake on lan web app
+    server: tencent-sv-docker
+    container: mastodon-web-1
+
+  - title: Gotosocial
+    logo: gotosocial.svg
+    url: https://m.eallion.com/
+    description: Open Source, Self-hosted, Your Notes, Your Way
+    server: bwh-la-docker
+    container: gotosocial
+
+  - title: Memos
+    logo: memos.webp
+    url: https://memos.eallion.com/
+    description: Open Source, Self-hosted, Your Notes, Your Way
+    server: my-docker
+    container: memos
+
+  - title: Certimate
+    logo: certimate.svg
+    url: https://ssl.eallion.com/
+    description: An open-source SSL certificate management tool that helps you automatically apply for and deploy SSL certificates, as well as automatically renew them when they are about to expire.
+    server: bwh-la-docker
+    container: certimate
+
+  - title: Umami
+    logo: umami.svg
+    url: https://umami.is/
+    description: The modern analytics platform
+    server: my-docker
+    container: umami
+
+  - title: Wallos
+    logo: wallos.webp
+    url: https://wallos.eallion.com/
+    description: Open-Source Personal Subscription Tracker
+    server: my-docker
+    container: wallos
+
+  - title: Watch Your LAN
+    logo: watchyourlan.png
+    url: http://192.168.0.2:8840/
+    description: AList proxy server for TvBox.
+    server: my-docker
+    container: watchyourlan
+
+  - title: QD Today
+    logo: qdtoday.png
+    url: http://192.168.0.2:8923/
+    description: HTTP 请求定时任务自动执行框架
+    server: my-docker
+    container: qd
+
+  - title: Calibre-Web
+    logo: calibre-web.svg
+    url: https://book.eallion.com
+    description: 一个简单好用的个人书库
+    server: my-docker
+    container: calibre-web
+
+  - title: MoonTV
+    logo: moontv.png
+    url: https://moontv.eallion.com/
+    description: 爱盼 - 资源随心，娱乐无限
+    server: my-docker
+    container: moontv
+
+  - title: LibreTV
+    logo: libretv.png
+    url: https://libretv.eallion.com/
+    description: 爱盼 - 资源随心，娱乐无限
+    server: my-docker
+    container: libretv
+
+  - title: AiPan
+    logo: aipan.png
+    url: http://192.168.0.2:8009/
+    description: 爱盼 - 资源随心，娱乐无限
+    server: my-docker
+    container: aipan
+
+  - title: CloudSaver
+    logo: cloudsaver.png
+    url: http://192.168.0.2:8008
+    description: 一个网盘资源搜索与转存工具
+    server: my-docker
+    container: cloud-saver
+
+  - title: XiaoMusic
+    logo: xiaomusic.ico
+    url: http://192.168.0.2:58090/static/tailwind/index.html
+    description: 一个网盘资源搜索与转存工具
+    server: my-docker
+    container: xiaomusic

@@ -1,0 +1,128 @@
+weight: 7
+taxonomy: AI
+icon: fas fa-ghost
+links:
+  - title: Future Tools
+    logo: futuretools.png
+    url: https://www.futuretools.io/
+    description: AI 导航 - Find The Exact AI Tool
+  - title: 层榜 AI 工具榜导航
+    logo: ai.cengbang.com.png
+    url: https://ai.cengbang.com/
+    description: 层榜 AI 工具榜导航集合 ,AI 工具箱 ,OpenAI Sora
+  - title: OpenAI
+    logo: chat.openai.com.png
+    url: https://chat.openai.com/
+    description: OpenAI ChatGPT 官网
+  - title: Claude
+    logo: claude.ai.png
+    url: https://claude.ai/
+    description: 标记美好生活
+  - title: AiHubMix
+    logo: aihubmix.png
+    url: https://aihubmix.com?aff=arLk
+    description: OpenAI Key 购买
+  - title: Stable Diffusion
+    logo: diffus.png
+    url: https://webui.graviti.com/
+    description: Stable Diffusion 集合，集成了大量的 API
+  - title: Perplexity
+    logo: perplexity.png
+    url: https://www.perplexity.ai/
+    description: 标记美好生活
+  - title: Pi, your personal AI
+    logo: heypi.com.png
+    url: https://heypi.com/talk
+    description: Pi, your personal AI
+  - title: Vercel AI
+    logo: chat.vercel.ai.png
+    url: https://chat.vercel.ai/
+    description: Next.js AI Chatbot
+  - title: Bing Copilot
+    logo: 380.png
+    url: https://www.bing.com/chat
+    description: Bing Copilot Chat
+  - title: Kimi.ai
+    logo: kimi.moonshot.cn.png
+    url: https://kimi.moonshot.cn/
+    description: 帮你看更大的世界
+  - title: 腾讯元宝
+    logo: yuanbao.tencent.com.png
+    url: https://yuanbao.tencent.com/chat/
+    description: 标记美好生活
+  - title: 通义
+    logo: 515.png
+    url: https://tongyi.aliyun.com/qianwen/
+    description: 我是通义，一个专门响应人类指令的大模型，希望能对你有所帮助
+  - title: 文心一言
+    logo: yiyan.baidu.com.png
+    url: https://yiyan.baidu.com/
+    description: 标记美好生活
+  - title: 讯飞星火大模型
+    logo: xinghuo.xfyun.cn.png
+    url: https://xinghuo.xfyun.cn/
+    description: AI 大语言模型 - 星火大模型 - 科大讯飞
+  - title: Coze
+    logo: coze.png
+    url: https://www.coze.com/
+    description: 标记美好生活
+  - title: CAIS
+    logo: safe.png
+    url: https://www.safe.ai/
+    description: Center for AI Safety (CAIS)
+  - title: Gigapixel AI
+    logo: topazlabs.png
+    url: https://www.topazlabs.com/gigapixel-ai
+    description: 图像 AI 放大
+  - title: 深言达意
+    logo: shenyandayi.com.png
+    url: https://shenyandayi.com/
+    description: 懂文字，更懂你 清华 AI 向量词典
+  - title: Royalty
+    logo: mubert.com.png
+    url: https://mubert.com/render
+    description: Free Music Generation For App And Content
+  - title: Regex.ai
+    logo: regex.ai.png
+    url: https://regex.ai/
+    description: AI Regular Expression Generator
+  - title: 阶跃
+    logo: stepfun.png
+    url: https://www.stepfun.com/
+    description: 标记美好生活
+  - title: Any Summary
+    logo: anysummary.png
+    url: https://www.anysummary.app/
+    description: Summarize any file with AI!
+  - title: Outfits AI
+    logo: outfitsai.png
+    url: https://www.outfitsai.com/
+    description: 衣服换装 AI
+  - title: WHEE
+    logo: whee.png
+    url: https://www.whee.com/
+    description: 高品质的 AI 素材生成器
+  - title: GeoSpy.ai
+    logo: geospy.ai.png
+    url: https://geospy.ai/
+    description: 标记美好生活
+  - title: TurboAI
+    logo: turboai.io.png
+    url: https://turboai.io/
+    description: 标记美好生活
+  - title: CF AI Playground
+    logo: cloudflare.svg
+    url: https://multi-modal.ai.cloudflare.com/
+    description: Cloudflare Multi-modal Playground
+  - title: 零一万物
+    logo: lingyiwanwu.png
+    url: https://www.lingyiwanwu.com/
+    description: AI2.0 大模型技术和应用的全球公司
+  - title: TextTo.site
+    logo: textto.site.png
+    url: https://textto.site/
+    description: 标记美好生活
+  - title: 302.AI
+    logo: 302.ai.png
+    url: https://302.ai/
+    description: 汇集全球顶级品牌的 AI 超市，零月费，按需付费，全面开放

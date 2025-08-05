@@ -1,0 +1,140 @@
+weight: 1
+taxonomy: 常用
+icon: fas fa-star
+links:
+  - title: 博客 Blog
+    logo: 3.png
+    url: https://www.eallion.com/
+    description: 大大的小蜗牛的个人生活博客
+  - title: Mastodon e5n.cc
+    logo: mastodon.svg
+    url: https://e5n.cc/@eallion
+    description: Charles Chin's personal Mastodon.
+  - title: Gmail
+    logo: gmail.svg
+    url: https://mail.google.com
+    description: Secure, smart, and easy to use email
+  - title: Deepseek DS
+    logo: deepseek.png
+    url: https://chat.deepseek.com/
+    description: 深度求索 探索未至之境
+  - title: 腾讯元宝
+    logo: yuanbao.svg
+    url: https://yuanbao.tencent.com/chat
+    description: 轻松工作 多点生活
+  - title: 飞牛私有云 NASfnOS
+    logo: fnOS.png
+    url: https://nas.eallion.com
+    description: NAS fnOS Cloudflared
+  - title: Twitter 𝕏
+    logo: x.svg
+    url: https://x.com/eallion
+    description: Blaze your glory!
+  - title: Youtube
+    logo: youtube.svg
+    url: https://youtube.com/
+    description: Boardcast Yourself
+  - title: 哔哩哔哩 Bilibili
+    logo: bilibili.svg
+    url: https://www.bilibili.com/
+    description: 你感兴趣的视频都在 B 站
+  - title: Reddit
+    logo: reddit.svg
+    url: https://www.reddit.com/user/eallion/
+    description: Heart of the internet
+  - title: 抖音 Douyin
+    logo: tiktok.svg
+    url: https://www.douyin.com/
+    description: 记录美好生活
+  - title: 小红书 xhs
+    logo: xhs.png
+    url: https://www.xiaohongshu.com
+    description: 你的生活指南
+  - title: GitHub
+    logo: github.svg
+    url: https://github.com/eallion
+    description: Build and ship software on a single, collaborative platform
+  - title: Cloudflare
+    logo: cloudflare.svg
+    url: https://dash.cloudflare.com/
+    description: Connect, protect, and build everywhere
+  - title: Vercel
+    logo: vercel.svg
+    url: https://vercel.com
+    description: Build and deploy the best web experiences with the Frontend Cloud
+  - title: 阿里云 Aliyun
+    logo: aliyun.svg
+    url: https://www.aliyun.com/
+    description: 计算，为了无法计算的价值
+  - title: 腾讯云 Tencent
+    logo: tencentcloud.svg
+    url: https://cloud.tencent.com/
+    description: 产业智变·云启未来
+  - title: Dropbox
+    logo: dropbox.svg
+    url: https://www.dropbox.com/
+    description: For all things worth saving
+  - title: 京东 (JD.COM)
+    logo: jingdong.png
+    url: https://www.jd.com
+    description: 正品低价、品质保障、配送及时、轻松购物！
+  - title: 酷白菜 Kubaicai
+    logo: kubaicai.png
+    url: https://www.kubaicai.com/?r=/l/ddlist
+    description: 每天千款优惠券秒杀，一折限时疯抢！
+  - title: 什么值得买 smzdm
+    logo: smzdm.svg
+    url: https://www.smzdm.com/
+    description: 科学消费 认真生活
+  - title: 淘宝 TB
+    logo: taobao.webp
+    url: https://www.taobao.com
+    description: 亚洲较大的网上交易平台
+  - title: 拼多多 PDD
+    logo: pinduoduo.png
+    url: https://mobile.yangkeduo.com/
+    description: 风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧
+  - title: 小米有品 Youpin
+    logo: youpin.png
+    url: https://www.xiaomiyoupin.com/
+    description: 小米旗下精品生活电商平台
+  - title: 抖音创作者中心
+    logo: tiktok.svg
+    url: https://creator.douyin.com/creator-micro/home
+    description: 抖音创作服务平台
+  - title: 小红书千帆
+    logo: qianfan.png
+    url: https://ark.xiaohongshu.com/
+    description: 小红书卖家版，解锁社交内容电商全新体验！
+  - title: 淘宝联盟
+    logo: alimama.ico
+    url: https://pub.alimama.com/portal/v2/pages/promo/goods/index.htm
+    description: 淘宝联盟·生态伙伴
+  - title: 京东联盟
+    logo: jingdong.png
+    url: https://union.jd.com/
+    description: 网络赚钱，流量变现，专业电商 CPS 联盟平台！
+  - title: 多多进宝
+    logo: pinduoduo.png
+    url: https://jinbao.pinduoduo.com/
+    description: 大量高佣金、多优惠券商品在这里等你，可以随时随地登录该网站推广商品赚钱，商品优惠券多、佣金高，让您轻松赚钱！
+  - title: 汇率
+    logo: currency.png
+    url: https://currency.eallion.com/
+    description: 全球 34 个币种，付款无货币转换费
+  - title: ITDOG 在线 ping
+    logo: itdog.png
+    url: https://www.itdog.cn/ping
+    description: 多地 ping 网络延迟测试
+  - title: TinyPNG
+    logo: tinypng.png
+    url: https://tinypng.com/
+    description: Compress AVIF, WebP, PNG and JPEG images
+  - title: 在线拼图 Pintu
+    logo: pingtu.png
+    url: https://kejiweixun.com/tools/merge-images
+    description: 图片拼接：长图拼接，把多张图片合并成一张，支持纵向或横向拼接图片，还能添加水印。该工具完全离线运行，手机建议使用微信小程序“拼长图”。
+  - title: Docker Status
+    logo: docker-status.svg
+    url: https://status.1panel.top/status/docker
+    description: 国内 Docker 服务状态 & 镜像加速监控

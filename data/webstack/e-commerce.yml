@@ -1,0 +1,279 @@
+weight: 10
+taxonomy: 电子商务
+icon: fab fa-shopify fa-lg
+list:
+  - term: 购物
+    icon: fas fa-cart-plus
+    links:
+      - title: 酷白菜
+        logo: 197.png
+        url: https://www.kubaicai.com/
+        description: 淘宝、京东、拼多多内部优惠券
+      - title: 淘宝
+        logo: 198.ico
+        url: https://www.taobao.com/
+        description: 淘宝网 - 亚洲较大的网上交易平台，提供各类服饰、美容、家居、数码、话费 / 点卡充值… 数亿优质商品，同时提供担保交易 ( 先收货后付款 ) 等安全交易保障服务，并由商家提供退货承诺、破损补寄等消费者保障服务，让你安心享受网上购物乐趣！
+      - title: 京东 (JD.COM)
+        logo: 199.png
+        url: http://www.jd.com/
+        description: 京东 JD.COM- 正品低价、品质保障、配送及时、轻松购物！专业的综合网上购物商城，为您提供正品低价的购物选择、优质便捷的服务体验。商品来自全球数十万品牌商家，囊括家电、手机、电脑、服装、居家、母婴、美妆、个护、食品、生鲜等丰富品类，满足各种购物需求。
+      - title: 苏宁易购
+        logo: 200.png
+        url: https://www.suning.com/
+        description: 苏宁易购苏宁易购 - 综合网上购物平台，商品涵盖家电、手机、电脑、超市、母婴、服装、百货、海外购等品类。送货更准时、价格更超值、上新货更快，正品行货、全国联保、可门店自提，全网更低价，让您放心去喜欢！
+      - title: 网易严选
+        logo: you163.svg
+        url: http://you.163.com/
+        description: 以严谨的态度，为中国消费者甄选天下优品
+      - title: Amazon
+        logo: amazon.svg
+        url: https://www.amazon.com/
+        description: 亚马逊 Amazon
+      - title: eBay
+        logo: ebay.svg
+        url: https://www.ebay.com/
+        description: 标记美好生活
+      - title: Gmarket
+        logo: gmarket.svg
+        url: http://global.gmarket.co.kr/Home/Main
+        description: 标记美好生活
+      - title: 楽 天
+        logo: rakuten.svg
+        url: https://www.rakuten.co.jp/
+        description: 标记美好生活
+      - title: 三越伊勢丹
+        logo: mistore.png
+        url: https://isetan.mistore.jp/onlinestore
+        description: 标记美好生活
+      - title: 松本清
+        logo: matsukiyo.png
+        url: https://www.matsukiyococokara-online.com/store/
+        description: 标记美好生活
+      - title: 无印良品
+        logo: 210.png
+        url: https://www.muji.com/
+        description: 标记美好生活
+      - title: 美 团
+        logo: meituan.svg
+        url: http://www.meituan.com/
+        description: 标记美好生活
+      - title: 小米有品
+        logo: xiaomiyoupin.png
+        url: https://www.xiaomiyoupin.com/
+        description: 小米有品是小米旗下新生活方式电商，致力于成为新中产优选的精品电商平台。有品坚持依从小米产品观进行选品及育品，为用户提供具备高品质、高颜值、科技感的好产品，为生活提供全场景解决方案。
+      - title: 闲鱼
+        logo: goofish.png
+        url: https://www.goofish.com/
+        description: 闲不住？上闲鱼！
+      - title: Flyway
+        logo: inflyway.png
+        url: https://www.inflyway.com/
+        description: 外贸收款：链接 / 二维码 / 银行账号收款；免费开通海外银行账号；全球主流币种收款；实时汇率 0 汇损，阳光结汇安全合规。跨境电商收款：一账号管理多店铺资金，店铺提现效率高，速度快。国际收银台：多个建站平台，对接零门槛；60+ 支付方式，70+ 交易币种。全球付：供应商收款信息管理，付款更高效；全球通道布局，付款最快 5 分钟到账。金融服务：极速提现 / 超前收款订单回款先拿到手；飞业融安全、合规、高效的快捷融资支持；飞先付可为优质卖家实现信用付款
+
+  - term: 卖家
+    icon: fa fa-amazon
+    links:
+      - title: 千牛工作台
+        logo: 653.png
+        url: https://myseller.taobao.com/home.htm
+        description: 商家一站式经营阵地
+      - title: 京麦工作台
+        logo: 656.ico
+        url: https://login.shop.jd.com/
+        description: 京麦工作台 京东商家
+      - title: 拼多多商家后台
+        logo: 654.png
+        url: https://mms.pinduoduo.com/
+        description: 拼多多 - 社交电商引领者，官方入驻平台，0 元开店 1 分钟入驻。开网店就选拼多多，新电商新机遇。社交电商流量红利期，获客成本超低，抢占巨额流量入口极速打造爆款。拼多多商家后台，全流程开店教程，从新手入门到进阶玩法，手把手教你开网店，已经有上千万卖家在拼多多入驻赚钱了。入驻、上新、货源、客服、物流、售后，一切问题在拼多多都迎刃而解。海量资源位，超多无门槛活动，新店老店都能上。超多店铺营销推广工具，新手开店不怕没客源。专属对接小二，帮你解决店铺运营困惑。
+      - title: 抖店商家
+        logo: 655.png
+        url: https://fxg.jinritemai.com/
+        description: 抖店官网是抖音电商官方商家入驻平台的登录入口，提供了一站式的商家开店服务。在这里，商家可以轻松地注册账号、创建店铺、管理商品、处理订单等。抖店官网致力于为广大商家提供高效便捷的电商运营解决方案，助力商家实现商业成功。
+      - title: 电商运营导航
+        logo: coonav.png
+        url: https://www.coonav.com/
+        description: 标记美好生活
+      - title: 电商头条
+        logo: coonav.png
+        url: https://www.coonav.com/hotnews/
+        description: 标记美好生活
+      - title: 店查查
+        logo: dianchacha.png
+        url: https://www.dianchacha.com/
+        description: 标记美好生活
+      - title: 电商记
+        logo: dianshangji.png
+        url: http://www.dianshangji.com/
+        description: 标记美好生活
+      - title: 淘大象
+        logo: taodaxiang.png
+        url: http://www.taodaxiang.com/
+        description: 标记美好生活
+      - title: 魔镜市场情报
+        logo: mktindex.png
+        url: https://www.mktindex.com/static/home/
+        description: 标记美好生活
+      - title: 排名易
+        logo: 248.png
+        url: http://www.paimingyi.cn/?i=63708
+        description: 标记美好生活
+      - title: OneSight
+        logo: onesight.png
+        url: https://www.onesight.com/
+        description: 标记美好生活
+      - title: 电商报
+        logo: dsb.png
+        url: http://www.dsb.cn/
+        description: 标记美好生活
+      - title: 天下网商
+        logo: wshang.ico
+        url: https://i.wshang.com/
+        description: 标记美好生活
+      - title: 网经社
+        logo: 100ec.png
+        url: http://www.100ec.cn/
+        description: 标记美好生活
+      - title: 雨果网
+        logo: cifnews.png
+        url: https://www.cifnews.com/
+        description: 标记美好生活
+      - title: Agiso 阿奇索自动发货软件
+        logo: agiso.png
+        url: https://www.agiso.com/
+        description: 阿奇索自动发货软件
+
+  - term: 淘客
+    icon: fa fa-anchor
+    links:
+      - title: 淘客导航
+        logo: taokenav.png
+        url: https://www.taokenav.com/
+        description: 做淘客必备的淘客工具合集网站
+      - title: 什么值得买
+        logo: smzdm.png
+        url: https://www.smzdm.com/
+        description: 科学消费 认真生活
+      - title: 大淘客联盟
+        logo: 219.webp
+        url: http://www.dataoke.com/
+        description: 大淘客联盟 dataoke.com 专注优质商品内容打造，为广大淘宝客提供精选商品，优质采集群跟推，节省时间及人力成本！联盟本着专注单品、极致转化的使命，提供业务包括精选商品库、实时销量榜单、优质采集群，以及淘宝客运营干货，帮助大家实现利益最大化，同时帮助淘宝卖家打造爆款，带动销售！
+      - title: 淘宝联盟
+        logo: pub.alimama.com.png
+        url: https://pub.alimama.com/portal/v2/pages/promo/goods/index.htm
+        description: 标记美好生活
+      - title: 多多进宝
+        logo: jinbao.pinduoduo.com.png
+        url: http://jinbao.pinduoduo.com/
+        description: 大量高佣金、多优惠券商品在这里等你，可以随时随地登录该网站推广商品赚钱，商品优惠券多、佣金高，让您轻松赚钱！
+      - title: 京东联盟
+        logo: 216.png
+        url: https://union.jd.com/
+        description: 京东联盟 - 网络赚钱，流量变现，专业电商 CPS 联盟平台，包含京粉、CPS 联盟，依托于京东商城推出的电商广告联盟赚钱平台，通过京东海量数据精细定向目标用户，开放京东电商整合能力，打造精准、高效、高转化的营销生态圈。
+      - title: 美团联盟
+        logo: union.meituan.com.png
+        url: https://union.meituan.com/
+        description: 标记美好生活
+      - title: 实选
+        logo: shixuan.png
+        url: https://www.shixuan.com/
+        description: 专注直播带货选品，8 年数字化选品服务商！
+      - title: 懒懒
+        logo: lanlanlife.png
+        url: http://www.lanlanlife.com/
+        description: 标记美好生活
+      - title: 好京客
+        logo: 221.ico
+        url: https://www.haojingke.com/
+        description: 标记美好生活
+      - title: 多麦联盟
+        logo: home.duomai.com.png
+        url: https://home.duomai.com/account/register?refer=213524
+        description: 标记美好生活
+      - title: 好单库
+        logo: publish.haodanku.com.png
+        url: http://publish.haodanku.com/Reg/index.html?i=16031
+        description: 标记美好生活
+      - title: 选单网
+        logo: xuandan.png
+        url: http://www.xuandan.com/NewUcenter/register?uid=13908
+        description: 标记美好生活
+      - title: 淘客助手
+        logo: 231.png
+        url: http://www.taokezhushou.com/
+        description: 标记美好生活
+      - title: 霍常亮
+        logo: 233.ico
+        url: http://www.huochangliang.com/
+        description: 教你副业变现，分享互联网创业项目，分析互联网创业项目赚钱思维，聚焦互联网创业项目行业内容分享，帮助创业者了解互联网创业的知识，推荐靠谱的互联网创业项目。
+      - title: 蒲公英
+        logo: 52892.png
+        url: http://www.52892.com/
+        description: 标记美好生活
+      - title: 聚推客联盟
+        logo: 399.ico
+        url: https://www.jutuike.com/
+        description: CPS 广告联盟平台
+
+  - term: 数据
+    icon: fa fa-database
+    links:
+      - title: 数据导航
+        logo: hao.199it.com.png
+        url: http://hao.199it.com/
+        description: 标记美好生活
+      - title: 国研网 - 综合版
+        logo: drcnet.com.png
+        url: https://www.drcnet.com.cn/
+        description: 标记美好生活
+      - title: 东方财富网
+        logo: data.eastmoney.com.png
+        url: http://data.eastmoney.com/center/
+        description: 标记美好生活
+      - title: 生意参谋
+        logo: 270.png
+        url: https://sycm.taobao.com/
+        description: 标记美好生活
+      - title: 蚂蚁金服
+        logo: tech.antfin.com.png
+        url: https://tech.antfin.com/
+        description: 标记美好生活
+      - title: 亿 邦
+        logo: ebrun.png
+        url: http://www.ebrun.com/data/
+        description: 标记美好生活
+      - title: 艾 瑞
+        logo: iresearch.ico
+        url: http://www.iresearch.com.cn/Datas.shtml/
+        description: 标记美好生活
+      - title: eMarketer
+        logo: emarketer.png
+        url: https://www.emarketer.com/
+        description: 标记美好生活
+      - title: 易 观
+        logo: analysys.png
+        url: https://www.analysys.cn/
+        description: 标记美好生活
+      - title: 谷歌指数
+        logo: google.png
+        url: https://www.google.com/trends/explore
+        description: 标记美好生活
+      - title: 百度指数
+        logo: index.baidu.com.png
+        url: http://index.baidu.com/
+        description: 标记美好生活
+      - title: 360 指数
+        logo: index.so.com.png
+        url: http://index.so.com/
+        description: 标记美好生活
+      - title: 微指数
+        logo: data.weibo.com.png
+        url: http://data.weibo.com/index
+        description: 标记美好生活
+      - title: 灰豚数据
+        logo: huitun.png
+        url: https://www.huitun.com/
+        description: 短视频 & 直播电商数据分析平台
+      - title: 考古加数据
+        logo: kaogujia.png
+        url: https://www.kaogujia.com/
+        description: 兴趣电商数据专家

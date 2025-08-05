@@ -1,0 +1,88 @@
+weight: 3
+taxonomy: Self Hosted
+icon: fas fa-server fa-lg
+links:
+  - title: Awesome Selfhosted
+    logo: awesome-selfhosted.svg
+    url: https://github.com/awesome-selfhosted/awesome-selfhosted
+    description: Self-hosted content and software
+  - title: selfh.st
+    logo: selfh-st.svg
+    url: https://selfh.st/
+    description: Self-hosted content and software
+  - title: Uptime Kuma Status
+    logo: uptimekuma.svg
+    url: https://status.eallion.com
+    description: Web Service status on Uptime Kuma
+  - title: Phanpy
+    logo: phanpy.svg
+    url: https://app.e5n.cc/
+    description: Phanpy Mastodon Client
+  - title: Sink
+    logo: sink.png
+    url: https://s.e5n.cc/
+    description: Sink URL Shortener
+  - title: Scoop Search
+    logo: scoop.jpg
+    url: https://scoop.eallion.com/
+    description: Scoop Search Online
+  - title: Gravatar Mirror
+    logo: gravatar.svg
+    url: https://gravatar.eallion.com/
+    description: Gravatar Mirror on Cloudflare
+  - title: 汇率
+    logo: currency.svg
+    url: https://currency.eallion.com/
+    description: 实时汇率换算
+  - title: 生日
+    logo: birthday.svg
+    url: https://birthday.eallion.com/
+    description: 实时汇率换算
+  - title: 在线屏幕测试
+    logo: 350.png
+    url: https://monitor.eallion.com/
+    description: 自建在线屏幕测试网站
+  - title: KMS Windows 激活服务器
+    logo: 355.ico
+    url: https://kms.eallion.com/
+    description: 自建 KMS Windows 激活服务器（上海）
+  - title: 色圖網站
+    logo: 448.png
+    url: https://color.eallion.com/
+    description: 标记美好生活
+  - title: Coloring China
+    logo: coloringchina.png
+    url: https://se.eallion.com/
+    description: 标记美好生活
+  - title: Cover Paint
+    logo: 476.png
+    url: https://cover.eallion.com/
+    description: Creating cover images is now super easy
+  - title: Pic Smaller
+    logo: 485.svg
+    url: https://pics.eallion.com/
+    description: Compress JPEG, PNG, WEBP, AVIF, SVG and GIF images intelligently
+  - title: 瀑布流图片浏览器
+    logo: viewer.png
+    url: https://viewer.eallion.com/
+    description: 标记美好生活
+  - title: Wallos
+    logo: 471.png
+    url: https://wallos.eallion.com/
+    description: Subscription Tracker
+  - title: Vercel OG
+    logo: vercel.svg
+    url: https://og.eallion.com/api/og?title=
+    description: Vercel OG API
+  - title: Hanzi Writer
+    logo: hanziwriter.png
+    url: https://zi.eallion.com/
+    description: Hanzi Writer 案例
+  - title: GitHub Stars Manager
+    logo: stars.webp
+    url: https://star.eallion.com/
+    description: GitHub Stars Manager
+  - title: 海棠诗社
+    logo: haitang.svg
+    url: https://shi.eallion.com/
+    description: 古韵今风，海棠诗梦间

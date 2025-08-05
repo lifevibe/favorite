@@ -1,0 +1,124 @@
+weight: 4
+taxonomy: 社交
+icon: fab fa-twitter
+links:
+  - title: Twitter 𝕏
+    logo: x.svg
+    url: https://x.com/eallion
+    description: It's what's happening.
+  - title: Phanpy
+    logo: 473.svg
+    url: https://app.e5n.cc/
+    description: Mastodon Web Client
+  - title: Delta Chat
+    logo: delta-chat.svg
+    url: https://i.delta.chat/#a=eallion%40e5n.cc&n=Charles%20Chin
+    description: 去中心化的安全聊天软件
+  - title: GoToSocial
+    logo: gotosocial.svg
+    url: https://m.eallion.com/
+    description: 自建 GoToSocial
+  - title: Memos 嘀咕
+    logo: memos.webp
+    url: https://memos.eallion.com/
+    description: 自建 Memos 笔记与个人微博客后端
+  - title: Mastodon Social
+    logo: 461.svg
+    url: https://mastodon.social/@eallion
+    description: Mastodon.social 官方实例
+  - title: Hotspot Hourly
+    logo: 578.png
+    url: https://hourly.top/
+    description: 每小时汇总更新的中国社交网络热点。完整榜单：https://hot.hourly.top
+  - title: Bluesky
+    logo: 606.png
+    url: https://bsky.app/
+    description: 标记美好生活
+  - title: Threads
+    logo: 387.svg
+    url: https://www.threads.net/@eallion
+    description: Threads
+  - title: Steam
+    logo: steam.svg
+    url: https://steamcommunity.com/id/eallion
+    description: (-75%) 喜加一，+1+1+1+1+1+1...
+  - title: Keybase
+    logo: keybase.svg
+    url: https://keybase.io/eallion
+    description: 标记美好生活
+  - title: Telegram
+    logo: telegram.svg
+    url: https://t.me/eallion
+    description: 标记美好生活
+  - title: instagram
+    logo: instagram.svg
+    url: https://www.instagram.com/eallion
+    description: 标记美好生活
+  - title: Charles Chin's Whisper
+    logo: 575.png
+    url: https://memo.eallion.com
+    description: Mastodon Public Timeline Mirror of e5n.cc via Mastogr.am
+  - title: reddit
+    logo: reddit.svg
+    url: https://www.reddit.com/user/eallion/
+    description: 标记美好生活
+  - title: Slack
+    logo: slack.svg
+    url: https://eallion.slack.com/
+    description: 标记美好生活
+  - title: LinkedIn
+    logo: linkedin.svg
+    url: https://www.linkedin.com/
+    description: 标记美好生活
+  - title: Medium
+    logo: medium.svg
+    url: https://medium.com/
+    description: 标记美好生活
+  - title: Pinterest
+    logo: pinterest.svg
+    url: https://www.pinterest.com/
+    description: 标记美好生活
+  - title: Parler
+    logo: parler.svg
+    url: https://www.parler.com/
+    description: 标记美好生活
+  - title: Facebook
+    logo: facebook.svg
+    url: https://www.facebook.com/
+    description: 标记美好生活
+  - title: StackOverflow
+    logo: stackoverflow.svg
+    url: https://stackoverflow.com/users/11409594/eallion
+    description: 标记美好生活
+  - title: Hotmail
+    logo: outlook.svg
+    url: https://www.hotmail.com/
+    description: 标记美好生活
+  - title: Discord
+    logo: discord.svg
+    url: https://discord.com/
+    description: 談話與聚會的好地方
+  - title: MastoFeed
+    logo: mastofeed.png
+    url: https://mastofeed.org/
+    description: Send your RSS Feeds to Mastodon
+  - title: feedsin.space
+    logo: feedsin.space.png
+    url: https://feedsin.space/
+    description: Mastodon Feed
+  - title: xLog
+    logo: xlog.svg
+    url: https://xlog.app/
+    description: Write. Own. Earn.
+  - title: 哔哔广场 BB
+    logo: memos.webp
+    url: https://immmmm.com/bbs/
+    description: 标记美好生活
+  - title: Lemmy.World
+    logo: lemmy.svg
+    url: https://lemmy.world/
+    description: A generic Lemmy server for everyone to use.
+  - title: Folo
+    logo: folo.svg
+    url: https://folo.is/
+    description: 标记美好生活
