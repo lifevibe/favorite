@@ -16,6 +16,7 @@ menu: about_header
             margin-right: 0 !important;
         }
     }
+    .content {width: 800px;}
     p{color:#1d232b;margin:1rem 0;text-indent:2rem;line-height:1.8;white-space:normal;word-break:break-all}
     .container img {width: 100%;max-width: 640px;}
 </style>
