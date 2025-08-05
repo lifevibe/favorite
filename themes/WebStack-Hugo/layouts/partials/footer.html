@@ -1,5 +1,3 @@
-<script type='text/javascript' src='{{ relURL "assets/js/jquery.ui.touch-punch.min-0.2.2.js" }}' id='jqueryui-touch-js'></script>
-<script type='text/javascript' src='{{ relURL "assets/js/clipboard.min-5.6.2.js" }}' id='clipboard-js'></script>
 <script type='text/javascript' src='{{ relURL "assets/js/tooltip-extend.js" }}' id='iplaycode-nav-js'></script>
 <script type='text/javascript' id='popper-js-extra'>
 /* <![CDATA[ */
@@ -8,11 +6,10 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
 /* ]]> */
 </script>
 <!-- 结束 -->
-<script type='text/javascript' src='{{ relURL "assets/js/popper.min.js" }}' id='popper-js'></script>
-<script type='text/javascript' src='{{ relURL "assets/js/bootstrap.min-4.3.1.js" }}' id='bootstrap-js'></script>
-<script type='text/javascript' src='{{ relURL "assets/js/theia-sticky-sidebar-1.5.0.js" }}' id='sidebar-js'></script>
-<script type='text/javascript' src='{{ relURL "assets/js/lazyload.min-12.4.0.js" }}' id='lazyload-js'></script>
-<!-- <script type='text/javascript' src='{{ relURL "assets/js/fancybox.min-3.5.7.js" }}' id='lightbox-js-js'></script> -->
+<script type='text/javascript' src='{{ relURL "assets/js/popper.min.js" }}?v=1.16.1' id='popper-js'></script>
+<script type='text/javascript' src='{{ relURL "assets/js/bootstrap.min.js" }}?v=4.6.2' id='bootstrap-js'></script>
+<script type='text/javascript' src='{{ relURL "assets/js/theia-sticky-sidebar.min.js" }}?v=1.7.0' id='sidebar-js'></script>
+<script type='text/javascript' src='{{ relURL "assets/js/lazyload.min.js" }}?v=19.1.3' id='lazyload-js'></script>
 {{ if $.Site.Params.expandSidebar }}
 <script type='text/javascript' src='{{ relURL "assets/js/app-anim.js" }}' id='appanim-js'></script>
 {{ else }}
@@ -27,7 +24,7 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
         }, 600);
     });
 </script>
-<script>        
+<script>
     $(document).ready(function(){
         setTimeout(function () {
             if ($('a.smooth[href="' + window.location.hash + '"]')[0]) {
@@ -76,7 +73,7 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
 <script>
     // Mastodon 滚动 Ticker
     // 远程 JSON API 地址
-    let jsonUrl = "https://www.eallion.com/api/v1/accounts/111136231674527355/statuses?limit=10&exclude_replies=true&exclude_reblogs=true";
+    let jsonUrl = "https://e5n.cc/api/v1/accounts/111136231674527355/statuses?limit=10&exclude_replies=true&exclude_reblogs=true";
 
     // 相对时间插件 2.5.2 https://tokinx.github.io/lately/
     (() => {
@@ -189,7 +186,6 @@ function switchNightMode(){
         document.body.classList.remove('io-grey-mode');
         document.body.classList.add('io-black-mode');
         document.cookie = "night=1;path=/"
-        console.log(' ');
         $(".switch-dark-mode").attr("data-original-title","日间模式");
         $(".mode-ico").removeClass("icon-night");
         $(".mode-ico").addClass("icon-light");
@@ -198,7 +194,6 @@ function switchNightMode(){
         document.body.classList.remove('io-black-mode');
         document.body.classList.add('io-grey-mode');
         document.cookie = "night=0;path=/"
-        console.log(' ');
         $(".switch-dark-mode").attr("data-original-title","夜间模式");
         $(".mode-ico").removeClass("icon-light");
         $(".mode-ico").addClass("icon-night");

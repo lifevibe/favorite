@@ -10,13 +10,13 @@
         stickFooter();
         // 网址块提示 
         if(isPC()){ $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'}); }else{ $('.qr-img[data-toggle="tooltip"]').tooltip({trigger: 'hover'}); }
-        // 初始化tab滑块
+        // 初始化 tab 滑块
         intoSlider();
-        // 初始化theiaStickySidebar
-        $('.sidebar').theiaStickySidebar({
-            additionalMarginTop: 90,
-            additionalMarginBottom: 20
-        });
+        // 初始化 theiaStickySidebar
+        // $('.sidebar').theiaStickySidebar({
+        //     additionalMarginTop: 90,
+        //     additionalMarginBottom: 20
+        // });
         // 初始化游客自定义数据
         /*if(theme.isCustomize == '1'){
             intoSites(false);
@@ -43,7 +43,7 @@
             trigger_resizable(false);
         //}
     }
-    // count-a数字动画
+    // count-a 数字动画
     $('.count-a').each(function () {
         $(this).prop('Counter', 0).animate({
             Counter: $(this).text()
@@ -177,26 +177,6 @@
             cache:false,
         });
     });
-    // app下载统计
-    var clipboard = new ClipboardJS('a.down_count', {
-        text: $(document).on('click','a.down_count', function(e) {
-            var mm = $(e.target).data('clipboard-text');  
-            $.ajax({
-                type:"POST",
-                url:theme.ajaxurl,
-                data: $(this).data(),
-                success : function( data ){
-                    $('.down-count-text').html(data);
-                }
-            });
-            if( mm ){
-                return mm; 
-            }
-        })
-    });
-    clipboard.on("success",function (e) {
-        alert("网盘密码已复制，点“确定”进入下载页面。");
-    });
 
     //夜间模式
     $(document).on('click', '.switch-dark-mode', function(event) {
@@ -310,7 +290,7 @@
 
     $('#sidebar-switch').on('click',function(){
         $('#sidebar').removeClass('mini-sidebar');
-	//221024: 调整左导航展开时,点击图标锚定定位失效
+	//221024: 调整左导航展开时，点击图标锚定定位失效
         //$('.sidebar-nav .change-href').attr('href','javascript:;');
 
     }); 
@@ -374,7 +354,7 @@
     function trigger_lsm_mini(isNoAnim){
         if (!$('.header-mini-btn input[type="checkbox"]').prop("checked")) {
             $('.sidebar-nav').removeClass('mini-sidebar');
-	    //221024: 调整左导航展开时,点击图标锚定定位失效
+	    //221024: 调整左导航展开时，点击图标锚定定位失效
             //$('.sidebar-nav .change-href').attr('href','javascript:;');
             $('.sidebar-menu ul ul').css("display", "none");
 	    console.log('checked=true');
@@ -405,7 +385,7 @@
         }
         //$('.sidebar-nav').css("transition","width .3s");
     }
-    //显示2级悬浮菜单
+    //显示 2 级悬浮菜单
     $(document).on('mouseover','.mini-sidebar .sidebar-menu ul:first>li,.mini-sidebar .flex-bottom ul:first>li',function(){
         var offset = 2;
         if($(this).parents('.flex-bottom').length!=0)
@@ -424,7 +404,7 @@
     $(document).on('mouseleave','.mini-sidebar .sidebar-menu ul:first, .mini-sidebar .slimScrollBar,.second.sidebar-popup',function(){
         $(".sidebar-popup.second").hide();
     });
-    //常驻2级悬浮菜单面板
+    //常驻 2 级悬浮菜单面板
     $(document).on('mouseover','.mini-sidebar .slimScrollBar,.second.sidebar-popup',function(){
         $(".sidebar-popup.second").show();
     });
@@ -462,7 +442,7 @@
         }
     });
 
-    //首页tab模式请求内容
+    //首页 tab 模式请求内容
     $(document).on('click', '.ajax-list a', function(event) {
         event.preventDefault();
         loadAjax( $(this), $(this).parents('.ajax-list') , '.'+$(this).data('target'));
