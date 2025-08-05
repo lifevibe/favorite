@@ -22,6 +22,10 @@
   url: https://www.aliyun.com
   description: 阿里云官方网站
 
-- title: UptimeRobot
-  url: https://www.uptimerobot.com
-  description: Uptime Robot 网站在线状态监控
+- title: Iconify
+  url: https://icon-sets.iconify.design/
+  description: Home of open source icon sets
+
+- title: Uptime Kuma
+  url: https://github.com/louislam/uptime-kuma
+  description: A fancy self-hosted monitoring tool
