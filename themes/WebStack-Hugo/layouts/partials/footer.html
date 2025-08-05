@@ -15,6 +15,7 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
 {{ else }}
 <script type='text/javascript' src='{{ relURL "assets/js/app-mini.js" }}' id='appmini-js'></script>
 {{ end }}
+
 <script type="text/javascript">
     $(document).ready(function(){
         var siteWelcome = $('#loading');
@@ -24,6 +25,7 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
         }, 600);
     });
 </script>
+
 <script>
     $(document).ready(function(){
         setTimeout(function () {
@@ -199,6 +201,269 @@ function switchNightMode(){
         $(".mode-ico").addClass("icon-night");
     }
 }
+</script>
+
+<script> 
+// 站内搜索功能
+document.addEventListener('DOMContentLoaded', function() {
+  const searchContainer = document.querySelector('.search-container');
+  const searchInput = document.querySelector('.search-input');
+  const searchIcon = document.querySelector('.search-icon');
+  const searchIconSvg = searchIcon.querySelector('.search-icon-svg');
+  const clearIconSvg = searchIcon.querySelector('.clear-icon-svg');
+  const closeIconSvg = searchIcon.querySelector('.close-icon-svg');
+  // 获取一言和今日诗词元素
+  const hitokoto = document.getElementById('hitokoto');
+  const jinrishici = document.getElementById('jinrishici');
+  // 获取内容区域
+  const contentDiv = document.getElementById('content');
+  
+  // 添加一个标志来跟踪 fuse.js 是否已加载
+  let fuseJsLoaded = false;
+  let fuseInstance = null;
+  let searchData = null;
+  // 存储原始内容的引用
+  let originalContentChildren = [];
+  
+  // 动态加载 fuse.js 的函数
+  function loadFuseJs() {
+    return new Promise((resolve, reject) => {
+      if (fuseJsLoaded) {
+        resolve();
+        return;
+      }
+      
+      const script = document.createElement('script');
+      script.src = '/assets/js/fuse.js';
+      script.onload = () => {
+        fuseJsLoaded = true;
+        resolve();
+      };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+  
+  // 加载搜索数据
+  async function loadSearchData() {
+    if (searchData) return searchData;
+    
+    try {
+      const response = await fetch('/index.json');
+      searchData = await response.json();
+      return searchData;
+    } catch (error) {
+      console.error('Failed to load search data:', error);
+      return [];
+    }
+  }
+  
+  // 初始化 Fuse 搜索实例
+  async function initFuse() {
+    if (fuseInstance) return fuseInstance;
+    
+    await loadSearchData();
+    if (typeof Fuse !== 'undefined' && searchData) {
+      fuseInstance = new Fuse(searchData, {
+        keys: ['title', 'description'],
+        threshold: 0.3,
+      });
+    }
+    return fuseInstance;
+  }
+  
+  // 获取所有网站卡片元素
+  function getAllSiteCards() {
+    return document.querySelectorAll('.url-card');
+  }
+  
+  // 获取所有分类标题元素
+  function getCategoryHeaders() {
+    return document.querySelectorAll('.d-flex.flex-fill');
+  }
+  
+  // 根据搜索结果隐藏/显示卡片和分类标题
+  function filterCardsBySearchResults(results) {
+    const allCards = getAllSiteCards();
+    const categoryHeaders = getCategoryHeaders();
+    const resultUrls = results.map(item => item.url);
+    
+    // 隐藏所有分类标题，除了搜索结果标题
+    categoryHeaders.forEach(header => {
+      if (!header.classList.contains('search-result-title')) {
+        header.style.setProperty('display', 'none', 'important');
+      } else {
+        // 移除 hidden 类以显示搜索结果标题
+        header.classList.remove('hidden');
+      }
+    });
+    
+    allCards.forEach(card => {
+      const cardLink = card.querySelector('a[data-url]');
+      if (cardLink) {
+        const cardUrl = cardLink.getAttribute('data-url');
+        if (resultUrls.includes(cardUrl)) {
+          // 符合搜索结果，显示
+          card.style.display = '';
+        } else {
+          // 不符合搜索结果，隐藏
+          card.style.setProperty('display', 'none', 'important');
+        }
+      }
+    });
+  }
+  
+  // 显示所有卡片和分类标题
+  function showAllCards() {
+    const allCards = getAllSiteCards();
+    const categoryHeaders = getCategoryHeaders();
+    
+    // 显示所有分类标题，并给搜索结果标题添加 hidden 类
+    categoryHeaders.forEach(header => {
+      header.style.display = '';
+      if (header.classList.contains('search-result-title')) {
+        header.classList.add('hidden');
+      }
+    });
+    
+    // 显示所有卡片
+    allCards.forEach(card => {
+      card.style.display = '';
+    });
+  }
+  
+  // 执行搜索
+  async function performSearch(query) {
+    if (!query.trim()) {
+      // 如果查询为空，显示所有内容
+      showAllCards();
+      return;
+    }
+    
+    if (!fuseInstance) {
+      await initFuse();
+    }
+    
+    const results = fuseInstance.search(query).map(result => result.item);
+    filterCardsBySearchResults(results);
+  }
+  
+  // 点击搜索图标展开输入框
+  searchIcon.addEventListener('click', function(e) {
+    e.stopPropagation();
+    
+    // 如果输入框已展开
+    if (searchInput.classList.contains('expanded')) {
+      // 如果有内容，清除内容
+      if (searchInput.value) {
+        searchInput.value = '';
+        updateIcon(); // 更新图标
+        showAllCards(); // 显示所有卡片
+      } else {
+        // 如果没有内容，关闭输入框
+        searchInput.classList.remove('expanded');
+        updateIcon(); // 更新图标
+        // 显示一言和今日诗词
+        if (hitokoto) hitokoto.closest('.nav-item').style.display = '';
+        if (jinrishici) jinrishici.closest('.nav-item').style.display = '';
+        showAllCards(); // 显示所有卡片
+      }
+    } else {
+      // 如果输入框未展开，展开输入框
+      searchInput.classList.add('expanded');
+      searchInput.focus();
+      updateIcon(); // 更新图标
+      // 隐藏一言和今日诗词
+      if (hitokoto) hitokoto.closest('.nav-item').style.setProperty('display', 'none', 'important');
+      if (jinrishici) jinrishici.closest('.nav-item').style.setProperty('display', 'none', 'important');
+      
+      // 动态加载 fuse.js
+      loadFuseJs()
+        .then(() => {
+          console.log('Fuse.js loaded successfully');
+          // 初始化搜索功能
+          return initFuse();
+        })
+        .catch(error => {
+          console.error('Failed to load Fuse.js:', error);
+        });
+    }
+  });
+  
+  // 监听输入事件执行搜索
+  searchInput.addEventListener('input', function() {
+    performSearch(this.value);
+    updateIcon();
+  });
+  
+  // 输入框内容变化时更新图标
+  searchInput.addEventListener('input', function() {
+    updateIcon();
+  });
+  
+  // 鼠标进入搜索图标时更新图标
+  searchIcon.addEventListener('mouseenter', function() {
+    updateIcon();
+  });
+  
+  // 鼠标离开搜索图标时恢复原始图标
+  searchIcon.addEventListener('mouseleave', function() {
+    if (searchInput.classList.contains('expanded')) {
+      showSearchIcon();
+    }
+  });
+  
+  // 点击页面其他地方时收缩输入框（仅当输入框无内容时）
+  document.addEventListener('click', function(e) {
+    if (!searchContainer.contains(e.target)) {
+      // 只有当输入框没有内容时才关闭
+      if (searchInput.classList.contains('expanded') && !searchInput.value) {
+        searchInput.classList.remove('expanded');
+        updateIcon();
+        // 显示一言和今日诗词
+        if (hitokoto) hitokoto.closest('.nav-item').style.display = '';
+        if (jinrishici) jinrishici.closest('.nav-item').style.display = '';
+        showAllCards(); // 显示所有卡片
+      }
+    }
+  });
+  
+  // 更新图标显示状态的函数
+  function updateIcon() {
+    if (!searchInput.classList.contains('expanded')) {
+      // 输入框未展开时显示搜索图标
+      showSearchIcon();
+    } else {
+      // 输入框展开时根据内容显示图标
+      if (searchInput.value) {
+        showClearIcon();
+      } else {
+        showCloseIcon();
+      }
+    }
+  }
+  
+  // 显示搜索图标
+  function showSearchIcon() {
+    searchIconSvg.classList.remove('d-none');
+    clearIconSvg.classList.add('d-none');
+    closeIconSvg.classList.add('d-none');
+  }
+  
+  // 显示清除图标
+  function showClearIcon() {
+    searchIconSvg.classList.add('d-none');
+    clearIconSvg.classList.remove('d-none');
+    closeIconSvg.classList.add('d-none');
+  }
+  
+  // 显示关闭图标
+  function showCloseIcon() {
+    searchIconSvg.classList.add('d-none');
+    clearIconSvg.classList.add('d-none');
+    closeIconSvg.classList.remove('d-none');
+  }
+});
 </script>
 </body>
 </html>

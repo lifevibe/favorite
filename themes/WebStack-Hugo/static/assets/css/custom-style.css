@@ -4,6 +4,10 @@ html {
     font-size: 15px;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /*左导航悬浮 sidebar-menu-inner 宽度调整为 90px*/
 .sidebar-popup.sidebar-menu-inner>div>ul>li.sidebar-item>ul {
     position: absolute;
@@ -190,6 +194,71 @@ html {
     border-radius: 10px;
     color: #999;
 }
+
+/* 站内搜索组件样式 */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 0;
+    padding: 10px 15px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    outline: none;
+    background: transparent;
+    transition: width 0.3s ease, padding 0.3s ease;
+    font-size: 16px;
+    opacity: 0;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.08);
+}
+
+.search-input.expanded {
+    width: 280px;
+    opacity: 1;
+    background: #fff;
+    padding: 10px 40px 10px 15px;
+}
+
+.search-input:focus {
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    margin-right: 5px;
+}
+
+.search-icon:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .search-input.expanded {
+        background: #303134;
+        border: 1px solid #5f6368;
+        color: #e8eaed;
+    }
+
+    .search-input:focus {
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    }
+}
+/* 站内搜索组件样式 End */
 
 footer.main-footer .footer-text {
     text-align: center;

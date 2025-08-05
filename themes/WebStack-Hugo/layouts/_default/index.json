@@ -1,0 +1,31 @@
+{{- $allLinks := slice -}}
+
+{{- range $name, $data := site.Data.webstack -}}
+  {{- with $data.links -}}
+    {{- range . -}}
+      {{- $allLinks = $allLinks | append (dict 
+        "title" .title 
+        "logo" .logo 
+        "url" .url 
+        "description" .description
+      ) -}}
+    {{- end -}}
+  {{- end -}}
+  
+  {{- with $data.list -}}
+    {{- range . -}}
+      {{- with .links -}}
+        {{- range . -}}
+          {{- $allLinks = $allLinks | append (dict 
+            "title" .title 
+            "logo" .logo 
+            "url" .url 
+            "description" .description
+          ) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $allLinks | jsonify -}}

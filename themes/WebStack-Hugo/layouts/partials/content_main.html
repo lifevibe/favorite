@@ -1,4 +1,10 @@
 <div id="content" class="content-site customize-site">
+    <div class="d-flex flex-fill search-result-title hidden">
+        <h4 class="text-gray text-lg mb-4 d-flex align-items-center">
+            <span class="site-tag mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4"><path stroke-linejoin="round" d="M40 20.842V6a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v36a2 2 0 0 0 2 2h16"/><path d="M14 17h6m8 0h6M14 28h6m-6 6h6m-3-14v-6m20.728 23.728l4.243 4.243"/><circle cx="33.485" cy="33.485" r="6" stroke-linejoin="round" transform="rotate(45 33.485 33.485)"/></g></svg></span>
+            搜索结果
+        </h4>
+    </div>
     {{ range sort $.Site.Data.webstack "weight" }}
         {{ if .list }}
             {{ range .list }}
@@ -50,7 +56,6 @@
                 </div>
                 {{ end }}
             </div><!--end row-->
-            <br />
             <!--END {{ .term }} -->
             {{ end }}
         {{ else }}
@@ -104,7 +109,6 @@
                 </div>
                 {{ end }}
             </div>
-            <br />
             <!--END {{ .taxonomy }} -->
         {{ end }}
     {{ end }}
