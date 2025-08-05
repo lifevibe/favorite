@@ -5,6 +5,10 @@
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/eallion/favorite) [![](https://status.eallion.com/api/badge/4/uptime/168)](https://status.eallion.com/)
 
+# Screenshot
+
+![](static/assets/images/content/eallion-2025.png)
+
 # 一个基于 Hugo 的静态响应式网址导航主题
 
 本项目是基于**纯静态**的网址导航网站 [webstack.cc](https://github.com/WebStackPage/WebStackPage.github.io) 制作的 [Hugo](https://gohugo.io/) 主题，是一个基于 Hugo 的静态响应式网址导航主题。<br/>
