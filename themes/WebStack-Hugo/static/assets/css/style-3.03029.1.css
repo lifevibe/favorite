@@ -423,7 +423,7 @@ footer.main-footer{padding:20px 30px;margin-top:0px}
 --------------------------------------------------------------*/
 #search{max-width:800px;position:relative}
 #search form{position:relative}
-#search-text{z-index:inherit;padding:9pt;height:50px;font-size:1pc;border:0;border-radius:3px;background-color:#fff;transition:.3s}
+#search-text{z-index:inherit;padding:9pt;height:50px;font-size:1pc;border:0;border-radius:3px;background-color:#f9f9f9;transition:.3s}
 #search button{position:absolute;top:0;right:0;background:#b7cbdf;border:0;width:36px;height:36px;margin:7px 9pt 0;line-height:36px;border-radius:9999px}
 #search button:hover{background:#000;cursor:pointer}
 #search button i{color:#fff;font-size:18px}
@@ -534,7 +534,7 @@ margin-top: 5px!important;width: 70%;margin: 0 auto;}
 .header-big:not(.no-bg) .s-type-list{border-radius: 50px !important;margin-bottom: 5px}
 .s-type:hover .s-type-list.big{display:inline-table}
 .header-big .s-type-list .anchor{background:#888;border-radius:100px;width:10px;height:4px;bottom:5px;-webkit-transition:.25s;transition:.25s}
-.header-big:not(.no-bg) .s-type-list .anchor{background:#fff}
+.header-big:not(.no-bg) .s-type-list .anchor{background:#888}
 .header-big .s-type-list label:hover{background:none}
 .header-big .s-type-list:before{display:none}
 .header-big .s-type{position:inherit;top:inherit;left:inherit;z-index:inherit;width:auto}
