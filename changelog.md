@@ -1,25 +1,4 @@
----
-title: "Change Log"
-date: 2006-04-01T00:00:00-08:00
-menu: about_header
----
-
-<style>
-    .main-content {
-        margin-left: 0px;
-    }
-    .navbar-menu {
-        margin-right: 170px !important;
-    }
-    @media (max-width:767.98px) {
-        .navbar-menu {
-            margin-right: 0 !important;
-        }
-    }
-    p{color:#1d232b;margin:1rem 0;text-indent:2rem;line-height:1.8;white-space:normal;word-break:break-all}
-</style>
-
-![GitHub Release](https://img.shields.io/github/v/release/eallion/favorite)
+# Changelog
 
 ## 7.0.1 (2025-08-06)
 
