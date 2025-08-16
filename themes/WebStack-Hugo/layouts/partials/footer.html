@@ -18,6 +18,12 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
 
 <script type='text/javascript' src='{{ relURL "assets/js/fuse.min.js?v7.1.0" }}' id='fuse-js'></script>
 
+<script>
+    var lazyLoadInstance = new LazyLoad({
+  // Your custom settings go here
+    });
+</script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         var siteWelcome = $('#loading');
@@ -371,6 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 将 HTML 添加到行中
             row.insertAdjacentHTML('beforeend', cardHtml);
+            lazyLoadInstance.update();
         });
     }
     

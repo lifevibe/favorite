@@ -40,9 +40,9 @@
                                 <div class="url-content d-flex align-items-center">
                                     <div class="url-img mr-2 d-flex align-items-center justify-content-center">
                                         {{ if findRE "http.*?(.|\n)*?" .logo }}
-                                            <img class="lazy" src="{{ .logo }}" data-src="{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
+                                            <img class="lazy" src="assets/images/faviconV2.png" data-src="{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
                                         {{ else }}
-                                            <img class="lazy" src="{{ $.Site.Params.logosPath }}/{{ .logo }}" data-src="{{ $.Site.Params.logosPath }}/{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
+                                            <img class="lazy" src="assets/images/faviconV2.png" data-src="{{ $.Site.Params.logosPath }}/{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
                                         {{ end }}
                                     </div>
                                     <div class="url-info flex-fill">
@@ -96,9 +96,9 @@
                                 <div class="url-content d-flex align-items-center">
                                     <div class="url-img mr-2 d-flex align-items-center justify-content-center">
                                         {{ if findRE "http.*?(.|\n)*?" .logo }}
-                                            <img class="lazy" src="{{ .logo }}" data-src="{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
+                                            <img class="lazy" src="assets/images/faviconV2.png" data-src="{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
                                         {{ else }}
-                                            <img class="lazy" src="{{ $.Site.Params.logosPath }}/{{ .logo }}" data-src="{{ $.Site.Params.logosPath }}/{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
+                                            <img class="lazy" src="assets/images/faviconV2.png" data-src="{{ $.Site.Params.logosPath }}/{{ .logo }}" onerror="this.src='https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url={{ .url | safeURL }}'" alt="{{ .title }}">
                                         {{ end }}
                                     </div>
                                     <div class="url-info flex-fill">
