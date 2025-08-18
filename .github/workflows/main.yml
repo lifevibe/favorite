@@ -13,6 +13,10 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    env:
+      HUGO_CACHEDIR: /tmp/.hugo_cache
+      HUGOMODS_CACHEDIR: /tmp/.hugo_mods_cache
+      PNPM_CACHEDIR: /tmp/.pnpm-store
 
     steps:
       - uses: actions/checkout@v4
