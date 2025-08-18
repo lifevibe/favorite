@@ -22,6 +22,7 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
     var lazyLoadInstance = new LazyLoad({
         elements_selector: ".lazy",
         data_src: "src",
+        threshold: 300,
         callback_error: (img) => {
             img.setAttribute("src", "assets/images/faviconV2.png");
         }
@@ -48,7 +49,13 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
                     scrollTop: $(window.location.hash).offset().top - 90
                 }, {
                     duration: 500,
-                    easing: "swing"
+                    easing: "swing",
+                    complete: function() {
+                        // 滚动完成后更新 LazyLoad
+                        if (lazyLoadInstance) {
+                            lazyLoadInstance.update();
+                        }
+                    }
                 });
             }
         }, 300);
@@ -61,7 +68,13 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
                     scrollTop: $($(this).attr("href")).offset().top - 90
                 }, {
                     duration: 500,
-                    easing: "swing"
+                    easing: "swing",
+                    complete: function() {
+                        // 滚动完成后更新 LazyLoad
+                        if (lazyLoadInstance) {
+                            lazyLoadInstance.update();
+                        }
+                    }
                 });
             }
             if($(this).hasClass('go-search-btn')){
@@ -87,7 +100,7 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
 <script>
     // Mastodon 滚动 Ticker
     // 远程 JSON API 地址
-    let jsonUrl = "https://www.eallion.com/api/v1/accounts/111136231674527355/statuses?limit=10&exclude_replies=true&exclude_reblogs=false";
+    let jsonUrl = "https://e5n.cc/api/v1/accounts/111136231674527355/statuses?limit=10&exclude_replies=true&exclude_reblogs=false";
 
     // 处理 Json 数据
     if (document.querySelector('#ticker')) {
@@ -254,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 加载搜索数据
     function loadSearchData() {
-        fetch('/index.json')
+        fetch('/webstack.json')
             .then(response => response.json())
             .then(data => {
                 // 过滤有效的数据项，description 可以为空
@@ -349,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const title = data.title;
             const description = data.description || '';
             const logo = data.logo || '';
-            const logoUrl = `assets/images/logos/${logo}`;
+            const logoUrl = `https://images.eallion.com/directus/files/${logo}`;
             
             // 创建卡片 HTML
             const cardHtml = `
@@ -379,7 +392,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 将 HTML 添加到行中
             row.insertAdjacentHTML('beforeend', cardHtml);
-            lazyLoadInstance.update();
+            setTimeout(() => {
+                if (lazyLoadInstance) {
+                    lazyLoadInstance.update();
+                }
+            }, 0);
         });
     }
     
@@ -590,5 +607,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
+<script>
+// 添加滚动事件监听，优化 LazyLoad
+let scrollTimer;
+window.addEventListener('scroll', function() {
+    if (scrollTimer) {
+        clearTimeout(scrollTimer);
+    }
+    scrollTimer = setTimeout(function() {
+        if (lazyLoadInstance) {
+            lazyLoadInstance.update();
+        }
+    }, 100);
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    // 现有代码...
+    
+    // 页面加载完成后更新 LazyLoad
+    setTimeout(function() {
+        if (lazyLoadInstance) {
+            lazyLoadInstance.update();
+        }
+    }, 1000);
+});
+</script>
 </body>
 </html>

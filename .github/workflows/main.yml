@@ -26,6 +26,53 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - name: Cache Hugo Resources
+        uses: actions/cache@v4
+        id: cache-hugo
+        with:
+          path: |
+            resources/_gen
+            ${{ env.HUGO_CACHEDIR }}
+          key: ${{ runner.os }}-hugo-${{ hashFiles('content/**', 'assets/**', 'layouts/**', 'config.toml', 'pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-
+
+      - name: Cache Hugo Modules
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.HUGOMODS_CACHEDIR }}
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PNPM_CACHEDIR }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Run Directus sync script fetch links
+        run: |
+          pnpm install
+          pnpm run directus
+        env:
+          DIRECTUS_API_URL: ${{ secrets.DIRECTUS_API_URL }}
+          DIRECTUS_FILES_URL: ${{ secrets.DIRECTUS_FILES_URL }}
+
       - name: Build Hugo
         run: |
           hugo --minify
@@ -40,5 +87,3 @@ jobs:
           FOLDER: public
           SKIP_SETTING: true
           INCREMENTAL: true
-
-
