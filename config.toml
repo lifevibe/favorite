@@ -19,7 +19,6 @@ publishDir            = "public"                            # 站点静态文件
     expandSidebar = true                                    # 默认展开左侧边导航栏
     logosPath     = "assets/images/logos"                   # 网站每个导航地址 logo 存放地址
     defaultLogo   = "assets/images/logos/default.webp"      # logo 图片资源不存在或者错误时，默认显示的 logo; 该参数如为空，将会一直加载对应的 logo，直至成功
-    nightMode     = false                                   # 默认站点为深色 (夜间) 模式
     yiyan         = false                                   # 默认启用一言服务，和今日诗词二选一
     jinrishici    = true                                    # 默认启用今日诗词服务，和一言二选一
 

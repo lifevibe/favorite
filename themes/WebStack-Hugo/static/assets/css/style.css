@@ -270,7 +270,7 @@ a>i.sidebar-more{transform:scale(.8)}
 --------------------------------------------------------------*/
 footer.main-footer{padding:20px 30px;margin-top:0px}
 #footer-tools{position:fixed;bottom:20px;right:20px;display:flex}
-#footer-tools .btn{color:#777;background:#eee;width:40px;height:40px;font-size:1rem;text-align:center;line-height:40px;padding:unset;display:block;border:unset}
+#footer-tools .btn{color:#777;background:#eee;width:40px;height:40px;font-size:1rem;text-align:center;line-height:40px;padding:unset;display:flex;justify-content:center;align-items:center;border:unset}
 #footer-tools .go-up{display:none}
 #footer-tools .btn:hover{color:#444}
 #footer-tools [data-v-db6ccf64][data-v-41ba7e2c],#footer-tools [data-v-db6ccf64][data-v-6d083e75]{top:unset!important;bottom:0!important;right:44px!important}
@@ -548,7 +548,7 @@ footer.main-footer{padding:20px 30px;margin-top:0px}
 .new-news ul li i{font-size:12px;top:3px;color:#888;position:absolute;padding:5px;left:-12px;background:#fff;transition:background-color .3s} 
 .new-news .news_all_btn{position:absolute;right:4px;padding:8px 10px;transition:.3s}
 .new-news .news_all_btn:hover{right:0px}
-.big-title .h1{letter-spacing: 6px;font-weight:900;}
+.big-title .h1{letter-spacing: 6px;font-weight:900;color:#282a2d;}
 @media screen and (max-width:767.98px){.new-news{height:200px}
 .big-title .h1{font-size:30px;margin: 40px 0 60px;}
 }
@@ -1014,7 +1014,7 @@ input.nav-link:disabled,input.nav-link[readonly]{background-color:transparent;op
 .io-black-mode .siteico{background:#222}
 .io-black-mode .posts-nav{color:rgba(221,221,221,.2)}
 .io-black-mode .input-group-text{color:#ddd;background:#26282a;border-color:#26282a}
-.io-black-mode #footer-tools .btn{color:#aaa;background:#363738}
+.io-black-mode #footer-tools .btn{color:#aaa;background:#363738;}
 .io-black-mode #footer-tools .btn:hover{color:#fff}
 .io-black-mode a:not(.btn):hover{color:#fff}
 .io-black-mode .down-content .statement:before{background:#1b1d1f;box-shadow:0 10px #1b1d1f,0 20px #1b1d1f}
@@ -1031,6 +1031,7 @@ input.nav-link:disabled,input.nav-link[readonly]{background-color:transparent;op
 .io-black-mode .ioch-code-highlight{background-color:#151619;border:0}
 .io-black-mode :not(pre) > code[class*="language-"],.io-black-mode pre[class*="language-"]{background-color:rgba(0,0,0,.15)}
 .io-black-mode .ioch-code-highlight .io-btn-copy{border:1px solid rgba(255,255,255,.5)}
+.io-black-mode .big-title .h1{color:#000000;}
 /*--------------------------------------------------------------
 ## webkit scrollbar style
 --------------------------------------------------------------*/

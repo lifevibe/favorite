@@ -190,56 +190,44 @@ var theme = {"ajaxurl":"","addico":"https:\/\/nav.baidu.cn\/wp-content\/themes\/
 </script>
 
 <script>
-//夜间 (日间) 模式 - 基于系统偏好自动加载
-(function(){
-    // 检查 cookie 是否存在
-    var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+// 暗黑模式切换功能
+$(document).ready(function() {
+    // Check OS preference for dark mode
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // 如果 cookie 不存在，根据系统偏好设置
-    if(night === ''){
-        // 检查用户系统是否偏好暗色模式
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-            document.body.classList.add('io-black-mode');
-            document.cookie = "night=1;path=/";
-            console.log('检测到系统暗色偏好，自动开启暗黑模式');
-        }else{
-            document.body.classList.add('io-grey-mode');
-            document.cookie = "night=0;path=/";
-            console.log('检测到系统亮色偏好，使用亮色模式');
-        }
-    }else{
-        // 如果 cookie 存在，使用 cookie 的值
-        if(night == '0'){
-            document.body.classList.remove('io-black-mode');
-            document.body.classList.add('io-grey-mode');
-        }else if(night == '1'){
-            document.body.classList.add('io-black-mode');
-            document.body.classList.remove('io-grey-mode');
-        }
+    // Get user's saved preference from localStorage
+    const savedMode = localStorage.getItem('darkmode');
+    
+    // Set initial mode based on OS preference or saved preference
+    if (prefersDarkMode || savedMode === 'dark') {
+        $('body').removeClass('io-grey-mode').addClass('io-black-mode');
+        $('#darkmode-toggle i').removeClass('icon-light').addClass('icon-night');
+        // 设置深色背景图
+        $("#search-bg").css("background-image", "url({{ $.Site.Params.images.searchImageD }})");
+    } else {
+        // 设置浅色背景图
+        $("#search-bg").css("background-image", "url({{ $.Site.Params.images.searchImageL }})");
     }
-})();
-//夜间 (日间) 模式切换
-$("#search-bg").css("background-image", "url({{ $.Site.Params.images.searchImageL }})");   //默认浅色背景
-function switchNightMode(){
-    var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
-    if(night == '0'){
-    $("#search-bg").css("background-image", "url({{ $.Site.Params.images.searchImageL }})");
-        document.body.classList.remove('io-grey-mode');
-        document.body.classList.add('io-black-mode');
-        document.cookie = "night=1;path=/"
-        $(".switch-dark-mode").attr("data-original-title","日间模式");
-        $(".mode-ico").removeClass("icon-night");
-        $(".mode-ico").addClass("icon-light");
-    }else{
-    $("#search-bg").css("background-image", "url({{ $.Site.Params.images.searchImageD }})")
-        document.body.classList.remove('io-black-mode');
-        document.body.classList.add('io-grey-mode');
-        document.cookie = "night=0;path=/"
-        $(".switch-dark-mode").attr("data-original-title","夜间模式");
-        $(".mode-ico").removeClass("icon-light");
-        $(".mode-ico").addClass("icon-night");
-    }
-}
+    
+    // Toggle dark mode on button click
+    $('#darkmode-toggle').on('click', function(e) {
+        e.preventDefault();
+        
+        if ($('body').hasClass('io-black-mode')) {
+            $('body').removeClass('io-black-mode').addClass('io-grey-mode');
+            $('#darkmode-toggle i').removeClass('icon-night').addClass('icon-light');
+            localStorage.setItem('darkmode', 'light');
+            // 切换到浅色背景图
+            $("#search-bg").css("background-image", "url({{ $.Site.Params.images.searchImageL }})");
+        } else {
+            $('body').removeClass('io-grey-mode').addClass('io-black-mode');
+            $('#darkmode-toggle i').removeClass('icon-light').addClass('icon-night');
+            localStorage.setItem('darkmode', 'dark');
+            // 切换到深色背景图
+            $("#search-bg").css("background-image", "url({{ $.Site.Params.images.searchImageD }})");
+        }
+    });
+});
 </script>
 
 <script>
