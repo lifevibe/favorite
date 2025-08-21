@@ -60,13 +60,14 @@ jobs:
           node-version: 20.x
           cache: 'pnpm'
 
-      - name: Run Directus sync script fetch links
+      - name: Fetch Directus links
         run: |
           pnpm install
           pnpm run directus
         env:
           DIRECTUS_API_URL: ${{ secrets.DIRECTUS_API_URL }}
           DIRECTUS_FILES_URL: ${{ secrets.DIRECTUS_FILES_URL }}
+          DIRECTUS_ACCESS_TOKEN: ${{ secrets.DIRECTUS_ACCESS_TOKEN  }}
 
       - name: Build Hugo
         run: |
