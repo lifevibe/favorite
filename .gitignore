@@ -5,3 +5,4 @@ node_modules
 .env
 .env.local
 assets/data/
+static/webstack.json

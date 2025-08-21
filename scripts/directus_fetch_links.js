@@ -1,18 +1,14 @@
+require('dotenv').config({ path: '.env.local' });
+
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
 // API 配置
 const DIRECTUS_API_URL = process.env.DIRECTUS_API_URL;
-const DIRECTUS_FILES_URL = process.env.DIRECTUS_FILES_URL;
-
+const DIRECTUS_ACCESS_TOKEN = process.env.DIRECTUS_ACCESS_TOKEN;
 const WEBSTACK_API_PARAMS = {
-  fields: '*,WebCategories.WebCategory_id.*',
-  limit: 100,
-};
-
-const FILES_API_PARAMS = {
-  fields: 'id,filename_disk',
+  fields: '*,logo.*,WebCategories.WebCategory_id.*',
   limit: 100,
 };
 
@@ -41,6 +37,9 @@ async function fetchAllData(apiUrl, apiParams) {
           ...apiParams,
           offset: offset,
         },
+        headers: {
+          'Authorization': `Bearer ${DIRECTUS_ACCESS_TOKEN}`
+        }
       });
 
       const items = response.data.data;
@@ -94,21 +93,28 @@ async function saveDataToFile(data) {
 
 // 主函数
 async function main() {
-  console.log('--- 步骤 1: 获取所有文件数据 ---');
-  const filesData = await fetchAllData(DIRECTUS_FILES_URL, FILES_API_PARAMS);
 
-  if (!filesData) {
-    console.error('无法获取文件数据，终止脚本。');
+  // 检查必要的环境变量
+  if (!DIRECTUS_API_URL) {
+    console.error('错误：未设置 DIRECTUS_API_URL 环境变量');
+    return;
+  }
+  
+  // 添加对访问令牌的检查
+  if (!DIRECTUS_ACCESS_TOKEN) {
+    console.error('错误：未设置 DIRECTUS_ACCESS_TOKEN 环境变量');
     return;
   }
 
-  // 构建一个文件 ID 到 filename_disk 的映射
-  const filesMap = filesData.reduce((acc, file) => {
-    acc[file.id] = file.filename_disk;
-    return acc;
-  }, {});
-  
-  console.log('\n--- 步骤 2: 获取 Webstack 数据 ---');
+  try {
+    new URL(DIRECTUS_API_URL); // 尝试构造 URL 对象来验证格式
+  } catch (err) {
+    console.error('错误：DIRECTUS_API_URL 不是有效的 URL');
+    return;
+  }
+  console.log('\n--- 获取 Webstack 数据 ---');
+  // 为了获取 logo.filename_disk，需要在请求参数中包含 logo 关联字段
+  // 注意：WEBSTACK_API_PARAMS 已经包含了 'logo.*'
   const webstackData = await fetchAllData(DIRECTUS_API_URL, WEBSTACK_API_PARAMS);
 
   if (!webstackData) {
@@ -119,15 +125,14 @@ async function main() {
   // 遍历 Webstack 数据，处理 logo 字段，并转换 weight 字段
   const processedData = webstackData.map(item => {
     const processedItem = { ...item };
-    
-    // 替换 logo 字段
-    if (processedItem.logo && filesMap[processedItem.logo]) {
-      processedItem.logo = filesMap[processedItem.logo];
+
+    // 替换 logo 字段：直接使用 logo.filename_disk 的值
+    if (processedItem.logo && typeof processedItem.logo === 'object' && processedItem.logo.filename_disk) {
+      processedItem.logo = processedItem.logo.filename_disk;
     }
 
     // 确保 weight 字段为数字类型
     if (processedItem.weight) {
-      // 使用 parseInt() 将字符串转换为整数
       processedItem.weight = parseInt(processedItem.weight, 10);
     }
 
