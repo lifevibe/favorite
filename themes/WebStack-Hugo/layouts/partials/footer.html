@@ -608,13 +608,28 @@ window.addEventListener('scroll', function() {
         }
     }, 100);
 });
-</script>
 
-<script>
+// 监听锚点跳转
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            // 平滑滚动到目标位置
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+            // 手动触发 LazyLoad 更新
+            setTimeout(() => {
+                if (lazyLoadInstance) {
+                    lazyLoadInstance.update();
+                }
+            }, 300); // 延迟 300ms 确保滚动完成
+        }
+    });
+});
+
+// 页面加载完成后更新 LazyLoad
 $(document).ready(function(){
-    // 现有代码...
-    
-    // 页面加载完成后更新 LazyLoad
     setTimeout(function() {
         if (lazyLoadInstance) {
             lazyLoadInstance.update();
@@ -622,5 +637,6 @@ $(document).ready(function(){
     }, 1000);
 });
 </script>
+
 </body>
 </html>
