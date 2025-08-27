@@ -7,6 +7,14 @@ on:
   # schedule:
   #  - cron: '0 0 1 * *'
   workflow_dispatch:
+    inputs:
+      build_content:
+        description: "选择构建范围："
+        required: true
+        default: 'build-favorite'
+        type: choice
+        options:
+          - 'build-favorite'
   repository_dispatch:
     types: [build-favorite]
 
