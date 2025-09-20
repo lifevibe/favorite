@@ -25,12 +25,22 @@ jobs:
       HUGO_CACHEDIR: /tmp/.hugo_cache
       HUGOMODS_CACHEDIR: /tmp/.hugo_mods_cache
       PNPM_CACHEDIR: /tmp/.pnpm-store
+      COSCLI_CACHEDIR: /tmp/.coscli-cache
 
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
+
+      - name: Cache coscli snapshots
+        id: cache-snapshots
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.COSCLI_CACHEDIR }}
+          key: ${{ runner.os }}-coscli-cache-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-coscli-cache-
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -81,13 +91,40 @@ jobs:
         run: |
           hugo --minify
 
-      - name: Deploy to Aliyun OSS
-        uses: docker://fangbinwei/aliyun-oss-website-action:v1
+      # - name: Deploy to Aliyun OSS
+      #   uses: docker://fangbinwei/aliyun-oss-website-action:v1
+      #   env:
+      #     ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+      #     ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+      #     BUCKET: s-eallion-com
+      #     ENDPOINT: oss-cn-shanghai.aliyuncs.com
+      #     FOLDER: public
+      #     SKIP_SETTING: true
+      #     INCREMENTAL: true
+
+      - name: Download and setup coscli
+        run: |
+          LATEST_VERSION=$(curl -s https://api.github.com/repos/tencentyun/coscli/releases/latest | jq -r '.tag_name')
+          FILE_NAME="coscli-${LATEST_VERSION}-linux-amd64"
+          DOWNLOAD_URL="https://github.com/tencentyun/coscli/releases/download/${LATEST_VERSION}/${FILE_NAME}"
+
+          echo "Downloading ${DOWNLOAD_URL}..."
+          curl -L -o "${FILE_NAME}" "${DOWNLOAD_URL}"
+
+          mv "${FILE_NAME}" /usr/local/bin/coscli
+          chmod +x /usr/local/bin/coscli
+
+          coscli config set --secret_id ${{ secrets.COS_SECRET_ID }} --secret_key ${{ secrets.COS_SECRET_KEY }}
+          coscli config add --init-skip=true -b ${{ secrets.COS_BUCKET }} -r ap-shanghai -e cos.ap-shanghai.myqcloud.com
+
+      - name: Configure and Sync COS with snapshot
+        run: |
+          coscli sync ./public/ cos://${{ secrets.COS_BUCKET }} -r --snapshot-path=${{ env.COSCLI_CACHEDIR }}
+
+      - name: Purge Cache
         env:
-          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
-          BUCKET: s-eallion-com
-          ENDPOINT: oss-cn-shanghai.aliyuncs.com
-          FOLDER: public
-          SKIP_SETTING: true
-          INCREMENTAL: true
+          COS_SECRET_ID: ${{ secrets.COS_SECRET_ID }} 
+          COS_SECRET_KEY: ${{ secrets.COS_SECRET_KEY }}
+          TEO_SITE_ID: ${{ secrets.TEO_SITE_ID }}
+        run: |
+          node scripts/purge_teo_cache.js
