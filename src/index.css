@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Custom scrollbar for sidebar */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Simple CSS-only tooltip transition */
+.tooltip-custom {
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+}
+
+/* GitHub Dimmed 暗色模式配色 */
+:root {
+  color-scheme: light;
+  --github-dimmed-bg: #1c2128;
+  --github-dimmed-surface: #252d3a;
+  --github-dimmed-border: #30363d;
+  --github-dimmed-text-primary: #c9d1d9;
+  --github-dimmed-text-secondary: #8b949e;
+  --github-dimmed-text-muted: #6e7681;
+  --github-dimmed-accent: #58a6ff;
+  --github-dimmed-hover: #2d333b;
+}
+
+/* 手动添加常用的暗色模式样式 - 使用 GitHub Dimmed 配色 */
+html.dark {
+  color-scheme: dark;
+  background-color: var(--github-dimmed-bg);
+  color: var(--github-dimmed-text-primary);
+}
+
+/* 背景色 */
+html.dark .dark\:bg-slate-800 {
+  background-color: var(--github-dimmed-surface) !important;
+}
+html.dark .dark\:bg-slate-900 {
+  background-color: var(--github-dimmed-bg) !important;
+}
+html.dark .dark\:bg-slate-700 {
+  background-color: var(--github-dimmed-hover) !important;
+}
+html.dark .dark\:bg-slate-600 {
+  background-color: #383f4b !important;
+}
+html.dark .dark\:bg-blue-900\/30 {
+  background-color: rgba(88, 166, 255, 0.3) !important;
+}
+html.dark .dark\:bg-white {
+  background-color: var(--github-dimmed-surface) !important;
+}
+
+/* 文字颜色 */
+html.dark .dark\:text-slate-400,
+html.dark .dark\:text-slate-500,
+html.dark .dark\:text-slate-600 {
+  color: var(--github-dimmed-text-secondary) !important;
+}
+html.dark .dark\:text-slate-300,
+html.dark .dark\:text-slate-700,
+html.dark .dark\:text-slate-800,
+html.dark .dark\:text-slate-900,
+html.dark .dark\:text-white {
+  color: var(--github-dimmed-text-primary) !important;
+}
+
+/* 设置面板相关 */
+html.dark .dark\:bg-gray-50 {
+  background-color: var(--github-dimmed-surface) !important;
+}
+html.dark .dark\:border-gray-200 {
+  border-color: var(--github-dimmed-border) !important;
+}
+html.dark .dark\:text-gray-700 {
+  color: var(--github-dimmed-text-secondary) !important;
+}
+
+/* 分类目录图标容器 */
+html.dark .dark\:bg-blue-100 {
+  background-color: rgba(88, 166, 255, 0.2) !important;
+}
+html.dark .dark\:bg-blue-800 {
+  background-color: rgba(88, 166, 255, 0.3) !important;
+}
+
+/* 编辑按钮背景 */
+html.dark .dark\:bg-white\/90,
+html.dark .dark\:bg-slate-800\/90 {
+  background-color: rgba(37, 45, 58, 0.9) !important;
+}
+
+/* 链接卡片阴影 */
+html.dark .dark\:shadow-blue-100\/50 {
+  --tw-shadow-color: rgba(88, 166, 255, 0.1) !important;
+}
+html.dark .dark\:shadow-blue-900\/20 {
+  --tw-shadow-color: rgba(88, 166, 255, 0.2) !important;
+}
+html.dark .dark\:shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Mastodon 和天气组件 */
+html.dark .dark\:bg-slate-700\/30 {
+  background-color: rgba(37, 45, 58, 0.3) !important;
+}
+
+/* 天气 tooltip */
+html.dark .dark\:bg-slate-600 {
+  background-color: var(--github-dimmed-surface) !important;
+}
+html.dark .dark\:border-b-slate-600 {
+  border-bottom-color: var(--github-dimmed-surface) !important;
+}
+
+/* 蓝色主题的提示框 */
+html.dark .dark\:bg-blue-50 {
+  background-color: rgba(88, 166, 255, 0.1) !important;
+}
+html.dark .dark\:bg-blue-900\/20 {
+  background-color: rgba(88, 166, 255, 0.2) !important;
+}
+
+/* 蓝色系文字 */
+html.dark .dark\:text-blue-100 {
+  color: #a5d8ff !important;
+}
+html.dark .dark\:text-blue-300 {
+  color: #79c0ff !important;
+}
+html.dark .dark\:text-blue-400,
+html.dark .dark\:text-blue-500,
+html.dark .dark\:text-blue-600 {
+  color: var(--github-dimmed-accent) !important;
+}
+html.dark .dark\:text-blue-700 {
+  color: #79c0ff !important;
+}
+html.dark .dark\:text-blue-900 {
+  color: #a5d8ff !important;
+}
+
+/* 边框颜色 */
+html.dark .dark\:border-slate-700,
+html.dark .dark\:border-slate-800,
+html.dark .dark\:border-slate-200 {
+  border-color: var(--github-dimmed-border) !important;
+}
+html.dark .dark\:border-slate-600 {
+  border-color: #383f4b !important;
+}
+
+/* Hover 状态 */
+html.dark .dark\:hover\:bg-slate-700:hover {
+  background-color: var(--github-dimmed-hover) !important;
+}
+html.dark .dark\:hover\:bg-slate-800:hover {
+  background-color: var(--github-dimmed-surface) !important;
+}
+
+/* 特殊组件 */
+html.dark .dark\:bg-slate-700\/50 {
+  background-color: rgba(37, 45, 58, 0.5) !important;
+}
+html.dark .dark\:bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--github-dimmed-surface), var(--github-dimmed-bg));
+}
+
+/* Aside 底部区域 */
+html.dark .dark\:bg-slate-800\/50 {
+  background-color: rgba(37, 45, 58, 0.5) !important;
+}
+
+/* Header 相关 */
+html.dark .dark\:bg-slate-800\/80 {
+  background-color: rgba(37, 45, 58, 0.8) !important;
+}
+
+/* 链接卡片相关 */
+html.dark .dark\:from-slate-700 {
+  --tw-gradient-from: var(--github-dimmed-surface) !important;
+}
+html.dark .dark\:to-slate-800 {
+  --tw-gradient-to: var(--github-dimmed-bg) !important;
+}
+
+/* 标题文字颜色 */
+html.dark .dark\:text-slate-100,
+html.dark .dark\:text-slate-200 {
+  color: var(--github-dimmed-text-primary) !important;
+}
+
+/* 搜索框样式 */
+html.dark .dark\:bg-slate-700\/50 {
+  background-color: rgba(37, 45, 58, 0.5) !important;
+}
+html.dark .dark\:placeholder-slate-400 {
+  color: var(--github-dimmed-text-muted) !important;
+}
+html.dark .dark\:focus\:ring-blue-500:focus {
+  --tw-ring-color: var(--github-dimmed-accent) !important;
+}

@@ -1,104 +1,81 @@
-> [!NOTE]  
-> **Update**: Modify by eallion
+# 蜗牛个人导航 - 腾讯云 EdgeOne Pages 版
 
-> Live Preview: https://s.eallion.com
+> 本项目完全由 AI 生成，我对项目中的代码一无所知。您可自由修改演绎。
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/eallion/favorite) [![](https://status.eallion.com/api/badge/4/uptime/168)](https://status.eallion.com/)
+**蜗牛个人导航**是一个基于 **React** + **Tailwind CSS** 构建的现代化云端导航/书签管理页面，专为 **Tencent Cloud EdgeOne Pages** 设计。它利用 EdgeOne Pages Functions 和 KV 存储，提供了一个无需维护服务器的 Serverless 导航解决方案。
 
-# Screenshot
+![CloudNav Screenshot](screenshots/preview.png)
 
-![](static/assets/images/content/eallion-2025.png)
+## ✨ 特性
 
-# 一个基于 Hugo 的静态响应式网址导航主题
+- **Serverless 架构**：完全运行在边缘节点，无需服务器。
+- **KV 数据存储**：配置、分类和链接数据均存储在 EdgeOne KV 中，读写速度快。
+- **安全管理**：
+    - 后台管理通过 `PASSWORD` 环境变量保护。
+    - 动态 Token 鉴权，支持自定义过期时间。
+- **丰富的小组件**：
+    - **实时天气**：集成和风天气 API。
+    - **Mastodon 动态**：展示你的最新嘟文。
+    - **AI**：集成 Gemini 等 AI 能力。
+- **数据管理**：
+    - 支持 Chrome/Edge 书签文件（Netscape HTML）导入/导出。
+    - 支持 JSON 格式全量备份/恢复。
+    - 完美的分类层级支持（递归导入导出）。
+- **个性化**：
+    - 支持深色/浅色模式切换。
+    - 支持多种视图模式（列表/卡片）。
+    - 自定义网站标题、Logo (Favicon)。
 
-本项目是基于**纯静态**的网址导航网站 [webstack.cc](https://github.com/WebStackPage/WebStackPage.github.io) 制作的 [Hugo](https://gohugo.io/) 主题，是一个基于 Hugo 的静态响应式网址导航主题。<br/>
+## 🚀 部署指南
 
-## 主题开源地址
+本项目的部署依赖于 **腾讯云 EdgeOne Pages**。
 
-[**GitHub**](https://github.com/shenweiyan/WebStack-Hugo) | [**Gitee**](https://gitee.com/shenweiyan/WebStack-Hugo) | [**GitCode**](https://gitcode.com/shenweiyan/WebStack-Hugo)
+### 前置要求
 
-## 主题演示地址
+1.  腾讯云账号并开通 EdgeOne 服务。
+2.  新建一个 `KV`，`命名空间名称` 随意，但绑定的变量名称必须为`CLOUDNAV_KV`（或修改代码适配名称）。
 
-- 站点：<https://shenweiyan.github.io/WebStack-Demo/>
-- 源码：<https://github.com/shenweiyan/WebStack-Demo>
+### 部署
 
-## 特色功能
+1. 新建项目
+2. 导入 Git 仓库
 
-这是 Hugo 版 WebStack 主题。可以借助下面的平台直接托管部署，无需服务器。
+#### 构建设置
 
-- [Webify](https://webify.cloudbase.net/) | [Netlify](https://app.netlify.com/) | [Cloudflare Pages](https://pages.cloudflare.com) | [Vercel](https://vercel.com) | [Github Pages](https://pages.github.com/)
+- 框架预设：`Vite`
+- 根目录：`./`
+- 输出目录：`./dist`
+- 编译命令：`npm run build`
+- 安装命令：`npm install`
 
-总体说一下特点：
+#### 环境变量
 
-- 采用了一直以来最喜欢的 Hugo 部署方式，方便高效。
-- 主要的配置信息都集成到了 `config.toml`，一键完成各种自定义的配置。
-- 导航的各个信息都集成在 `data/webstack.yml` 文件中，方便后续增删改动。
+- `PASSWORD`：前端登录密码。
 
-```
-- taxonomy: 科研办公
-  icon: fas fa-flask fa-lg
-  list:
-    - term: 生物信息
-      links:
-        - title: NCBI
-          logo: ncbi.jpg
-          url: https://www.ncbi.nlm.nih.gov/
-          description: National Center for Biotechnology Information.
-        - title: Bioconda
-          logo: bioconda.jpg
-          url: https://anaconda.org/bioconda/
-          description: "Bioconda :: Anaconda.org."
-    - term: 云服务器
-      links:
-        - title: 阿里云
-          logo: 阿里云.jpg
-          url: https://www.aliyun.com/
-          description: 上云就上阿里云。
-        - title: 腾讯云
-          logo: 腾讯云.jpg
-          url: https://cloud.tencent.com/
-          description: 产业智变，云启未来。
-```
+### 绑定 KV
 
-- 做了手机电脑自适应以及夜间模式。
-- 增加了搜索功能，以及下拉的热词选项（基于百度 API）。
-- 增加了一言、和风天气的 API。
+1. 点击左侧 `KV 存储`
+2. 绑定命名空间
 
-## 使用说明
+- 变量名称：`CLOUDNAV_KV`（如果没有修改代码，此处必须为`CLOUDNAV_KV`）
+- 命名空间：选择前置要求中新建的命名空间
 
-这是一个开源的公益项目，你可以拿来制作自己的网址导航，也可以做与导航无关的网站。
+3. 重新部署
 
-WebStack 有非常多的魔改版本，这是其中一个。如果你对本主题进行了一些个性化调整，欢迎来本项目中 [issue](https://github.com/shenweiyan/WebStack-Hugo/issues) 分享一下！
+## ⚙️ 使用说明
 
-## 安装说明
+1.  **首次访问**：点击页面右上角（或菜单中）的设置图标。
+2.  **登录**：输入在环境变量中设置的 `PASSWORD`。
+3.  **导入书签**：支持从浏览器导出的 `.html` 文件导入，系统会自动解析目录结构。
+4.  **配置组件**：在设置面板中，你可以配置天气 API Key、Mastodon 实例地址等。
 
-关于 Windows/Linux 下详细的安装与使用说明，请参考文档。
+## 💡 灵感来源
 
-📗 **《WebStack-Hugo | 一个静态响应式导航主题》**
+本项目的灵感来源于以下优秀的开源项目，特此致谢：
 
-- [链接 1 - GitHub Discussions](https://github.com/shenweiyan/Knowledge-Garden/discussions/10)
-- [链接 2 - 维燕的知识花园](https://weiyan.cc/kg-discussions-10)
+- [sese972010/CloudNav-](https://github.com/sese972010/CloudNav-)
+- [aabacada/CloudNav-abcd](https://github.com/aabacada/CloudNav-abcd)
 
-## 感谢
+## 📄 License
 
-本主题的部分代码参考了以下几个开源项目，特此感谢。
-
-- [WebStackPage/WebStackPage.github.io](https://github.com/WebStackPage/WebStackPage.github.io)
-- [liutongxu/liutongxu.github.io](https://github.com/liutongxu/liutongxu.github.io)
-- [iplaycode/webstack-hugo](https://github.com/iplaycode/webstack-hugo)
-
-感谢以下所有朋友对本主题所做出的贡献。  
-
-- [@yuanj82](https://github.com/yuanj82)
-- [@yanbeiyinhanghang](https://github.com/yinhanghang)
-- [@jetsung](https://github.com/jetsung)
-
-## 赞赏
-
-如果你觉得本项目对你有所帮助，欢迎请作者喝杯热咖啡 >.<
-
-![donate-wecaht-aliapy](https://user-images.githubusercontent.com/26101369/212630361-aa393be8-581e-4a97-bfe2-256e883791fb.jpg)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=shenweiyan/WebStack-Hugo&type=Date)](https://star-history.com/#shenweiyan/WebStack-Hugo&Date)
+本项目采用 [GLWT License](LICENSE) 开源。
