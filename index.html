@@ -41,8 +41,19 @@
 
     <title>蜗牛个人导航</title>
   <link rel="stylesheet" href="/src/index.css">
+  <script>
+    // 确保页面加载时使用正确的主题
+    (function() {
+      const theme = localStorage.getItem('cloudnav_theme_preference');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
 </head>
-  <body class="bg-gray-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 transition-colors duration-300">
+  <body class="bg-gray-50 text-slate-900 transition-colors duration-300">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

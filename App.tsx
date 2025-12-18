@@ -31,6 +31,7 @@ import { LinkItem, Category, DEFAULT_CATEGORIES, INITIAL_LINKS, WebDavConfig, AI
 import { parseBookmarks } from './services/bookmarkParser';
 import { DEFAULT_ICON_CONFIG } from './src/constants';
 import { configManager, loadAppConfig, saveAppConfig, getAppConfig, getWebDavConfig, getSearchConfig, getIconConfig, getViewMode, getUIConfig, getAIConfig, getWebsiteConfig, getMastodonConfig, getWeatherConfig, updateWebDavConfig, updateSearchConfig, updateIconConfig, updateMastodonConfig, updateWeatherConfig, updateViewMode, updateUIConfig, updateAIConfig, updateWebsiteConfig, syncConfigToKV, syncConfigFromKV } from './src/utils/configManager';
+import { extractColorFromImage, generateColorFromText, ExtractedColor } from './src/utils/colorExtractor';
 import Icon from './components/Icon';
 import CardSkeleton from './components/CardSkeleton';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -82,14 +83,28 @@ function App() {
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [darkMode, setDarkMode] = useState(() => {
-    // 优先级：1. 用户个人偏好 > 2. 管理员设置 > 3. 系统默认（跟随系统）
+    // 优先级：1. 用户个人偏好 > 2. 默认浅色模式
     const savedTheme = localStorage.getItem('cloudnav_theme_preference');
     if (savedTheme === 'light' || savedTheme === 'dark') {
       return savedTheme === 'dark';
     }
-    // 否则跟随系统设置
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // 默认使用浅色模式，不跟随系统设置
+    return false;
   });
+
+  // 初始化时立即应用主题，避免闪烁
+  useEffect(() => {
+    // 确保初始化时立即应用主题，避免闪烁
+    const savedTheme = localStorage.getItem('cloudnav_theme_preference');
+    const isDark = savedTheme === 'dark';
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }, []);
 
   // 监听 darkMode 变化并应用到 document
   useEffect(() => {
@@ -272,6 +287,9 @@ function App() {
 
   // 服务器配置加载状态
   const [isServerConfigLoaded, setIsServerConfigLoaded] = useState(false);
+
+  // 颜色缓存状态
+  const [linkColors, setLinkColors] = useState<Map<string, ExtractedColor>>(new Map());
 
   // --- Helpers & Sync Logic ---
 
@@ -1811,6 +1829,39 @@ function App() {
     setHoveredSearchSource(null);
   };
 
+  // --- Mouse tracking for hover cards effect ---
+  useEffect(() => {
+    const handlePointerMove = (event: PointerEvent) => {
+      const linkCards = document.querySelectorAll('.link-card');
+
+      linkCards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+
+        // Calculate center point of the card
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Calculate pointer position relative to center
+        const relativeX = event.clientX - centerX;
+        const relativeY = event.clientY - centerY;
+
+        // Normalize to -1 to 1 range
+        const x = relativeX / (rect.width / 2);
+        const y = relativeY / (rect.height / 2);
+
+        // Update CSS custom properties
+        (card as HTMLElement).style.setProperty('--pointer-x', x.toFixed(3));
+        (card as HTMLElement).style.setProperty('--pointer-y', y.toFixed(3));
+      });
+    };
+
+    document.addEventListener('pointermove', handlePointerMove);
+
+    return () => {
+      document.removeEventListener('pointermove', handlePointerMove);
+    };
+  }, []);
+
   // --- UI Config ---
   const handleShowPinnedWebsitesChange = async (show: boolean) => {
     setShowPinnedWebsites(show);
@@ -2186,29 +2237,63 @@ function App() {
     // 根据视图模式决定卡片样式
     const isDetailedView = viewMode === 'detailed';
 
+    // 获取或生成颜色
+    const linkColor = linkColors.get(link.id) || (() => {
+      let color: ExtractedColor;
+      if (link.icon) {
+        // 对于有图标的链接，使用默认颜色，稍后异步提取
+        color = { hex: '#3b82f6', rgb: '59, 130, 246' };
+        // 异步提取颜色
+        extractColorFromImage(link.icon).then(extractedColor => {
+          if (extractedColor) {
+            setLinkColors(prev => new Map(prev.set(link.id, extractedColor)));
+          }
+        }).catch(() => {
+          // 提取失败时使用标题生成颜色
+          const generatedColor = generateColorFromText(link.title);
+          setLinkColors(prev => new Map(prev.set(link.id, generatedColor)));
+        });
+      } else {
+        // 对于没有图标的链接，根据标题生成颜色
+        color = generateColorFromText(link.title);
+        setLinkColors(prev => new Map(prev.set(link.id, color)));
+      }
+      return color;
+    })();
+
     const style = {
       transform: CSS.Transform.toString(transform),
       transition: isDragging ? 'none' : transition,
       opacity: isDragging ? 0.5 : 1,
       zIndex: isDragging ? 1000 : 'auto',
-    };
+      '--icon-color': linkColor.hex,
+      '--icon-color-rgb': linkColor.rgb
+    } as React.CSSProperties;
 
     return (
       <div
         ref={setNodeRef}
         style={style}
-        className={`group relative transition-all duration-200 cursor-grab active:cursor-grabbing min-w-0 max-w-full overflow-hidden hover:shadow-lg hover:shadow-blue-100/50 dark:hover:shadow-blue-900/20 ${
+        className={`link-card group relative transition-all duration-200 cursor-grab active:cursor-grabbing min-w-0 max-w-full overflow-hidden hover:shadow-lg ${
           isSortingMode || isSortingPinned
             ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800'
             : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700'
         } ${isDragging ? 'shadow-2xl scale-105' : ''} ${
           isDetailedView
-            ? 'flex flex-col rounded-2xl border shadow-sm p-4 min-h-[100px] hover:border-blue-400 dark:hover:border-blue-500'
-            : 'flex items-center rounded-xl border shadow-sm hover:border-blue-300 dark:hover:border-blue-600'
+            ? 'flex flex-col rounded-2xl border shadow-sm p-4 min-h-[100px]'
+            : 'flex items-center rounded-xl border shadow-sm'
         }`}
         {...attributes}
         {...listeners}
       >
+        {/* Icon background for hover effect */}
+        <div className="icon-bg">
+          {link.icon ? (
+            <img src={link.icon} alt={`${link.title} background`} />
+          ) : (
+            <span className="text-6xl opacity-20">{link.title.charAt(0).toUpperCase()}</span>
+          )}
+        </div>
         {/* 链接内容 - 移除 a 标签，改为 div 防止点击跳转 */}
         <div className={`flex flex-1 min-w-0 overflow-hidden ${
           isDetailedView ? 'flex-col' : 'items-center gap-3'
@@ -2218,7 +2303,7 @@ function App() {
             isDetailedView ? '' : 'w-full'
           }`}>
             {/* Icon */}
-            <div className={`text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 ${
+            <div className={`icon-main text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 ${
               isDetailedView ? 'w-8 h-8 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800' : 'w-8 h-8 rounded-lg bg-slate-50 dark:bg-slate-700'
             }`}>
                 {link.icon ? <img src={link.icon} alt={`${link.title} 的图标`} className="w-5 h-5" loading="lazy"/> : link.title.charAt(0)}
@@ -2249,21 +2334,57 @@ function App() {
     // 根据视图模式决定卡片样式
     const isDetailedView = viewMode === 'detailed';
 
+    // 获取或生成颜色
+    const linkColor = linkColors.get(link.id) || (() => {
+      let color: ExtractedColor;
+      if (link.icon) {
+        // 对于有图标的链接，使用默认颜色，稍后异步提取
+        color = { hex: '#3b82f6', rgb: '59, 130, 246' };
+        // 异步提取颜色
+        extractColorFromImage(link.icon).then(extractedColor => {
+          if (extractedColor) {
+            setLinkColors(prev => new Map(prev.set(link.id, extractedColor)));
+          }
+        }).catch(() => {
+          // 提取失败时使用标题生成颜色
+          const generatedColor = generateColorFromText(link.title);
+          setLinkColors(prev => new Map(prev.set(link.id, generatedColor)));
+        });
+      } else {
+        // 对于没有图标的链接，根据标题生成颜色
+        color = generateColorFromText(link.title);
+        setLinkColors(prev => new Map(prev.set(link.id, color)));
+      }
+      return color;
+    })();
+
     return (
       <div
         key={link.id}
-        className={`group relative transition-all duration-200 hover:shadow-lg hover:shadow-blue-100/50 dark:hover:shadow-blue-900/20 ${
+        className={`link-card group relative transition-all duration-200 hover:shadow-lg ${
           isSelected
             ? 'bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800'
             : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700'
         } ${isBatchEditMode ? 'cursor-pointer' : ''} ${
           isDetailedView
-            ? 'flex flex-col rounded-2xl border shadow-sm p-4 min-h-[100px] hover:border-blue-400 dark:hover:border-blue-500 items-start justify-start text-left w-full min-w-0'
-            : 'flex items-center justify-between rounded-xl border shadow-sm p-3 hover:border-blue-300 dark:hover:border-blue-600'
+            ? 'flex flex-col rounded-2xl border shadow-sm p-4 min-h-[100px] items-start justify-start text-left w-full min-w-0'
+            : 'flex items-center justify-between rounded-xl border shadow-sm p-3'
         }`}
+        style={{
+          '--icon-color': linkColor.hex,
+          '--icon-color-rgb': linkColor.rgb
+        } as React.CSSProperties}
         onClick={() => isBatchEditMode && toggleLinkSelection(link.id)}
         onContextMenu={(e) => handleContextMenu(e, link)}
       >
+        {/* Icon background for hover effect */}
+        <div className="icon-bg">
+          {link.icon ? (
+            <img src={link.icon} alt={`${link.title} background`} />
+          ) : (
+            <span className="text-6xl opacity-20">{link.title.charAt(0).toUpperCase()}</span>
+          )}
+        </div>
         {/* 链接内容 - 在批量编辑模式下不使用 a 标签 */}
         {isBatchEditMode ? (
           <div className={`flex flex-1 min-w-0 overflow-hidden h-full w-full ${
@@ -2277,7 +2398,7 @@ function App() {
                   {/* 移动端第一行：图标 + 标题 */}
                   <div className="flex items-center gap-3 w-full md:hidden">
                     {/* 图标 */}
-                    <div className="text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
+                    <div className="icon-main text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
                       {link.icon ? <img src={link.icon} alt={`${link.title} 的图标`} className="w-6 h-6" loading="lazy"/> : link.title.charAt(0)}
                     </div>
                     {/* 标题 */}
@@ -2294,7 +2415,7 @@ function App() {
                   )}
 
                   {/* PC 端：左侧图标 */}
-                  <div className="hidden md:flex text-blue-600 dark:text-blue-400 items-center justify-center text-sm font-bold uppercase shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
+                  <div className="icon-main hidden md:flex text-blue-600 dark:text-blue-400 items-center justify-center text-sm font-bold uppercase shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
                     {link.icon ? <img src={link.icon} alt={`${link.title} 的图标`} className="w-10 h-10" loading="lazy"/> : link.title.charAt(0)}
                   </div>
 
@@ -2319,7 +2440,7 @@ function App() {
                 {/* 简洁视图保持原有布局 */}
                 <div className={`flex items-center gap-3 w-full`}>
                   {/* Icon */}
-                  <div className={`text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 ${
+                  <div className={`icon-main text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 ${
                     'w-8 h-8 rounded-lg bg-slate-50 dark:bg-slate-700'
                   }`}>
                       {link.icon ? <img src={link.icon} alt={`${link.title} 的图标`} className="w-5 h-5" loading="lazy"/> : link.title.charAt(0)}
@@ -2351,7 +2472,7 @@ function App() {
                   {/* 移动端第一行：图标 + 标题 */}
                   <div className="flex items-center gap-3 w-full md:hidden">
                     {/* 图标 */}
-                    <div className="text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
+                    <div className="icon-main text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
                       {link.icon ? <img src={link.icon} alt={`${link.title} 的图标`} className="w-6 h-6" loading="lazy"/> : link.title.charAt(0)}
                     </div>
                     {/* 标题 */}
@@ -2368,7 +2489,7 @@ function App() {
                   )}
 
                   {/* PC 端：左侧图标 */}
-                  <div className="hidden md:flex text-blue-600 dark:text-blue-400 items-center justify-center text-sm font-bold uppercase shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
+                  <div className="icon-main hidden md:flex text-blue-600 dark:text-blue-400 items-center justify-center text-sm font-bold uppercase shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 shadow-sm">
                     {link.icon ? <img src={link.icon} alt={`${link.title} 的图标`} className="w-10 h-10" loading="lazy"/> : link.title.charAt(0)}
                   </div>
 
@@ -2393,7 +2514,7 @@ function App() {
                 {/* 简洁视图保持原有布局 */}
                 <div className={`flex items-center gap-3 w-full`}>
                   {/* Icon */}
-                  <div className={`text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 ${
+                  <div className={`icon-main text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-bold uppercase shrink-0 ${
                     'w-8 h-8 rounded-lg bg-slate-50 dark:bg-slate-700'
                   }`}>
                       {link.icon ? <img src={link.icon} alt={`${link.title} 的图标`} className="w-5 h-5" loading="lazy"/> : link.title.charAt(0)}
