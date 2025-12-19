@@ -1072,8 +1072,9 @@ function App() {
 
   // 监听退出登录事件
   useEffect(() => {
-    const handleAuthStateChanged = (e: CustomEvent) => {
-      if (e.detail.isAuthenticated === false) {
+    const handleAuthStateChanged = async (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail.isAuthenticated === false) {
         // 退出登录，清除认证状态
         setAuthToken(null);
         setSyncStatus('offline');
@@ -1433,8 +1434,18 @@ function App() {
       processedUrl = 'https://' + processedUrl;
     }
 
+    // 更新链接
     const updated = links.map(l => l.id === editingLink.id ? { ...l, ...data, url: processedUrl } : l);
-    updateData(updated, categories);
+    
+    // 去重：确保每个 ID 只存在一次，保留最新的记录
+    const uniqueLinks: LinkItem[] = Array.from(
+      updated.reduce((map: Map<string, LinkItem>, link: LinkItem) => {
+        map.set(link.id, link); // 后面的会覆盖前面的，保留最新记录
+        return map;
+      }, new Map<string, LinkItem>()).values()
+    );
+    
+    updateData(uniqueLinks, categories);
     setEditingLink(undefined);
   };
 
@@ -2194,6 +2205,7 @@ function App() {
     // Security Filter: Always hide links from locked categories
     result = result.filter(l => !isCategoryLocked(l.categoryId));
 
+
     // Search Filter
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
@@ -2209,13 +2221,25 @@ function App() {
       result = result.filter(l => l.categoryId === selectedCategory);
     }
 
-    // 按照 order 字段排序，如果没有 order 字段则按创建时间排序
-    // 修改排序逻辑：order 值越大排在越前面，新增的卡片 order 值最大，会排在最前面
-    // 我们需要反转这个排序，让新增的卡片 (order 值最大) 排在最后面
+    // In non-search mode, exclude pinned links since they have their own section
+    if (!searchQuery.trim() && selectedCategory === 'all') {
+      result = result.filter(l => !l.pinned);
+    }
+
+    // 排序逻辑
     return result.sort((a, b) => {
+      // 如果在搜索模式下，优先显示置顶链接
+      if (searchQuery.trim()) {
+        // 置顶的排在前面，非置顶的排在后面
+        if (a.pinned && !b.pinned) return -1;
+        if (!a.pinned && b.pinned) return 1;
+        // 如果都是置顶或都不是置顶，则按 order 或 createdAt 排序
+      }
+      
+      // 按照 order 字段排序，如果没有 order 字段则按创建时间排序
       const aOrder = a.order !== undefined ? a.order : a.createdAt;
       const bOrder = b.order !== undefined ? b.order : b.createdAt;
-      // 改为升序排序，这样 order 值小 (旧卡片) 的排在前面，order 值大 (新卡片) 的排在后面
+      // 升序排序，这样 order 值小 (旧卡片) 的排在前面，order 值大 (新卡片) 的排在后面
       return aOrder - bOrder;
     });
   }, [links, selectedCategory, searchQuery, categories, unlockedCategoryIds]);
@@ -3184,43 +3208,57 @@ function App() {
                         )}
                     </div>
                  ) : (
-                    isInitialLoading && selectedCategory === 'all' && !searchQuery ? (
-                        <div className={`grid gap-3 ${
-                              viewMode === 'detailed'
+                    searchQuery ? (
+                        // 搜索模式下只显示结果
+                        <div key={searchQuery} className={`grid gap-3 ${
+                            viewMode === 'detailed'
                                 ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'
                                 : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'
-                            }`}>
-                            <CardSkeleton viewMode={viewMode} count={20} />
-                        </div>
-                    ) : isSortingMode === selectedCategory ? (
-                        <DndContext
-                            sensors={sensors}
-                            collisionDetection={closestCorners}
-                            onDragEnd={handleDragEnd}
-                        >
-                            <SortableContext
-                                items={displayedLinks.map(link => link.id)}
-                                strategy={rectSortingStrategy}
-                            >
-                            <div className={`grid gap-3 ${
-                                  viewMode === 'detailed'
-                                    ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'
-                                    : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'
-                                }`}>
-                                    {displayedLinks.map(link => (
-                                        <SortableLinkCard key={link.id} link={link} />
-                                    ))}
-                                </div>
-                            </SortableContext>
-                        </DndContext>
-                    ) : (
-                        <div className={`grid gap-3 ${
-                          viewMode === 'detailed'
-                            ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'
-                            : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'
                         }`}>
                             {displayedLinks.map(link => renderLinkCard(link))}
                         </div>
+                    ) : (
+                        // 非搜索模式下的正常渲染
+                        <>
+                            {isInitialLoading && selectedCategory === 'all' ? (
+                                <div className={`grid gap-3 ${
+                                    viewMode === 'detailed'
+                                        ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'
+                                        : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'
+                                }`}>
+                                    <CardSkeleton viewMode={viewMode} count={20} />
+                                </div>
+                            ) : isSortingMode === selectedCategory ? (
+                                <DndContext
+                                    sensors={sensors}
+                                    collisionDetection={closestCorners}
+                                    onDragEnd={handleDragEnd}
+                                >
+                                    <SortableContext
+                                        items={displayedLinks.map(link => link.id)}
+                                        strategy={rectSortingStrategy}
+                                    >
+                                        <div className={`grid gap-3 ${
+                                            viewMode === 'detailed'
+                                                ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'
+                                                : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'
+                                        }`}>
+                                            {displayedLinks.map(link => (
+                                                <SortableLinkCard key={link.id} link={link} />
+                                            ))}
+                                        </div>
+                                    </SortableContext>
+                                </DndContext>
+                            ) : (
+                                <div className={`grid gap-3 ${
+                                    viewMode === 'detailed'
+                                        ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'
+                                        : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'
+                                }`}>
+                                    {displayedLinks.map(link => renderLinkCard(link))}
+                                </div>
+                            )}
+                        </>
                     )
                  )}
             </section>
