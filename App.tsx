@@ -2739,16 +2739,7 @@ function App() {
                  {authToken ? <span className="text-green-600">已同步</span> : <span className="text-amber-500">离线</span>}
                </div>
 
-               <a
-                 href={GITHUB_REPO_URL}
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="flex items-center gap-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-                 title="Fork this project on GitHub"
-               >
-                 <GitFork size={14} />
-                 <span>Favorite</span>
-               </a>
+               
             </div>
         </div>
       </aside>
