@@ -1,9 +1,9 @@
 // 应用常量定义
 
 export const APP_CONFIG = {
-  name: '蜗牛个人导航',
+  name: '🎉LifeVibe - 网址导航',
   version: '1.0.0',
-  description: '现代化云端导航页面',
+  description: '云端导航',
   githubUrl: 'https://github.com/eallion/favorite-cloudflare',
 } as const
 
