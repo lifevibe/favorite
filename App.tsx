@@ -2688,7 +2688,7 @@ function App() {
         {/* Logo */}
         <div className="h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-700 shrink-0">
             <span className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              {aiConfig.navigationName || '蜗牛导航'}
+              {aiConfig.navigationName || '🎉LifeVibe - 网址导航'}
             </span>
         </div>
 
