@@ -1,7 +1,7 @@
 {
-  "name": "蜗牛个人导航",
-  "short_name": "蜗牛个人导航",
-  "description": "一个现代化的云端导航页面",
+  "name": "🎉LifeVibe - 网址导航",
+  "short_name": "🎉LifeVibe - 网址导航",
+  "description": "云端导航",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
