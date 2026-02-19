@@ -132,7 +132,7 @@ function App() {
       url: '',
       username: '',
       password: '',
-      enabled: false
+      enabled: true
   });
 
   // AI Config State - 使用配置管理器
